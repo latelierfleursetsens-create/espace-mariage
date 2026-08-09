@@ -1,4 +1,4 @@
-# Espace Mariage V7.5.3 PROD
+# Espace Mariage V7.5.5 TEST
 
 Ce paquet est prévu pour un dépôt GitHub Pages séparé afin d'utiliser :
 https://mariage.latelierfleursetsens.fr
