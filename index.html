@@ -52,7 +52,7 @@
 .pickup-notice{margin:12px 0 0;padding:12px 14px;border:1px solid #e7c89f;border-left:5px solid #b48a55;border-radius:12px;background:#fff8ee;color:#684719;line-height:1.5;font-size:14px}
 .pickup-notice strong{color:#6f2638}
 .pickup-notice .pickup-icon{font-size:18px;margin-right:5px}
-@media(max-width:700px){.grid,.checks,.dashboard-grid,.onboarding-steps{grid-template-columns:1fr}.photos{grid-template-columns:1fr 1fr}.guide-images{gap:14px}.guide-image-card--dimensions,.guide-image-card--portees,.guide-image-card--tarifs{max-width:100%}.guide-image-card figcaption{font-size:16px}.wrap{padding:10px}.quantity-choice{padding:10px}.qty-control{grid-template-columns:40px 52px 40px}.qty-btn{width:40px;height:40px}.qty-input{width:52px!important;height:40px}.premium-flower-grid{grid-template-columns:1fr}}</style></head><body><main class="wrap"><section class="hero"><img src="assets/logo.jpg"><h1>Mon espace mariage 🌸</h1><p>Un espace personnel pour compléter votre projet et retrouver vos documents.</p><p class="muted">V7.5.6 PROD</p></section>
+@media(max-width:700px){.grid,.checks,.dashboard-grid,.onboarding-steps{grid-template-columns:1fr}.photos{grid-template-columns:1fr 1fr}.guide-images{gap:14px}.guide-image-card--dimensions,.guide-image-card--portees,.guide-image-card--tarifs{max-width:100%}.guide-image-card figcaption{font-size:16px}.wrap{padding:10px}.quantity-choice{padding:10px}.qty-control{grid-template-columns:40px 52px 40px}.qty-btn{width:40px;height:40px}.qty-input{width:52px!important;height:40px}.premium-flower-grid{grid-template-columns:1fr}}</style><script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script></head><body><main class="wrap"><section class="hero"><img src="assets/logo.jpg"><h1>Mon espace mariage 🌸</h1><p>Un espace personnel pour compléter votre projet et retrouver vos documents.</p><p class="muted">V7.5.6 PROD</p></section>
 <section id="authCard" class="card"><div class="tabs"><button class="btn tab active" id="loginTab">Connexion</button><button class="btn tab soft" id="signupTab">Créer mon espace</button></div><div class="grid"><label>E-mail<input id="email" type="email" autocomplete="email"></label><label>Mot de passe<input id="password" type="password" minlength="8" autocomplete="current-password"></label></div><div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap"><button class="btn primary" id="authAction">Me connecter</button><button class="btn soft" id="resetPwd">Mot de passe oublié</button></div><div class="auth-separator"><span>ou</span></div><button class="btn google-btn" id="googleClientAuth" type="button"><span class="google-g">G</span><span>Continuer avec Google</span></button><p class="muted" style="margin-top:10px">Utilisez toujours la même adresse e-mail pour retrouver votre dossier existant.</p><p id="authMsg" class="muted"></p></section>
 <section id="space" class="hidden"><div class="card top"><div><b id="welcome"></b><div class="muted" id="userEmail"></div></div><button class="btn soft" id="logout">Se déconnecter</button></div><div class="tabs"><button class="btn tab active" data-view="dashboard">Tableau de bord</button><button class="btn tab soft" data-view="project">Ma fiche</button><button class="btn tab soft" data-view="planning">Mon planning</button><button class="btn tab soft" data-view="docs">Devis et factures</button></div>
 <section id="dashboardView" class="card"><div id="firstProjectGuide" class="onboarding hidden"><div class="onboarding-head"><h2>Bienvenue dans votre espace mariage 🌸</h2><p>Pour démarrer votre projet, complétez votre demande de mariage. Élodie pourra ainsi découvrir vos envies, les couleurs souhaitées, les créations dont vous avez besoin et vos inspirations.</p></div><div class="onboarding-steps"><div class="onboarding-step"><div class="onboarding-number">1</div><h3>Compléter ma demande</h3><p>Renseignez les informations de votre mariage, choisissez vos créations et ajoutez vos photos d’inspiration.</p></div><div class="onboarding-step"><div class="onboarding-number">2</div><h3>Élodie étudie votre projet</h3><p>Votre demande est transmise à L’Atelier Fleurs & Sens afin d’être consultée et préparée.</p></div><div class="onboarding-step"><div class="onboarding-number">3</div><h3>Suivre mon dossier</h3><p>Vous retrouverez ensuite ici votre planning, vos devis, vos factures et l’avancement de votre projet.</p></div></div><div class="onboarding-cta"><button class="btn primary" type="button" data-go="project">Créer ma demande de mariage</button></div><p class="muted onboarding-note">Cela ne prend que quelques minutes et vous pourrez modifier votre fiche plus tard.</p></div><div id="regularDashboard"><h2>Mon tableau de bord</h2><div id="weddingConfirmedBanner" class="hidden" style="margin:0 0 18px;padding:18px;border-radius:16px;background:#fff4f7;border:1px solid #e7b9c8;text-align:center;"><div style="font-size:24px;margin-bottom:5px;">💍 Félicitations !</div><div style="font-size:18px;font-weight:800;color:#7a2945;">Votre mariage est officiellement réservé 🤍</div><p id="weddingConfirmedText" style="margin:8px 0 0;line-height:1.55;">Votre commande est validée et votre date est bloquée dans le planning d’Élodie.</p><p style="margin:8px 0 0;line-height:1.55;">🌸 Élodie reviendra vers vous <strong>6 à 8 semaines avant votre mariage</strong> pour vous présenter votre proposition de bouquet et préparer avec vous les derniers détails.</p><div style="display:inline-block;margin-top:12px;padding:6px 12px;border-radius:999px;background:#7a2945;color:white;font-weight:800;font-size:12px;">✓ MARIAGE CONFIRMÉ</div></div><div class="dashboard-grid"><div class="dash-card"><h3>💍 Mon mariage</h3><div id="dashCountdown" class="countdown">—</div><p id="dashWeddingDate" class="muted"></p></div><div class="dash-card"><h3>🌸 Avancement de mon dossier</h3><div id="dashStatus" class="dash-value">Demande en préparation</div><div class="progress-track"><div id="dashProgress" class="progress-fill" style="width:10%"></div></div><p id="dashNextStep" class="muted"></p></div><div class="dash-card"><h3>📅 Prochaine date</h3><div id="dashNextDate" class="dash-value">À définir</div><p id="dashNextDateDetail" class="muted"></p><div class="quick-actions"><button class="btn soft" type="button" data-go="planning">Voir le planning</button></div></div><div class="dash-card"><h3>📄 Mon devis</h3><div id="dashQuote" class="dash-value">Aucun devis disponible</div><p id="dashQuoteDetail" class="muted"></p><div class="quick-actions"><button class="btn primary" type="button" data-go="docs">Voir mes documents</button></div></div></div><div class="quick-actions"><button class="btn soft" type="button" data-go="project">Modifier ma fiche</button><button class="btn soft" type="button" data-go="planning">Consulter mes dates</button></div></div></section>
@@ -540,6 +540,45 @@ function clientEmailShell(title,subtitle,contentHtml){
     '</div>'+
   '</div>';
 }
+
+function excelSafeText(value){return String(value==null?'':value);}
+function excelSafeName(value){return excelSafeText(value).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[<>:"\/\\|?*]+/g,'_').replace(/\s+/g,' ').trim().slice(0,80)||'demande';}
+function excelDateFR(value){if(!value)return '';var p=String(value).slice(0,10).split('-');return p.length===3?p[2]+'/'+p[1]+'/'+p[0]:String(value);}
+function excelPrestationLines(data){
+  var q=data.prestationQuantites||{},r=data.rubansPersonnalises||{};
+  return (data.prestations||[]).map(function(label){var qty=Math.max(1,Number(q[label])||1);return qty+' x '+label+(r[label]?' — Texte : '+r[label]:'');});
+}
+function buildDemandeExcelAttachment(data){
+  if(typeof XLSX==='undefined')throw new Error('Module Excel indisponible. Rechargez la page puis réessayez.');
+  var nomComplet=[data.prenom||'',data.nom||''].join(' ').replace(/\s+/g,' ').trim()||'Cliente';
+  var photos=Array.isArray(data.photos)?data.photos:[];
+  var requestId=String(data.ownerUid||((typeof current!=='undefined'&&current&&current.uid)?current.uid:'')||('demande_'+Date.now()));
+  var prestationLines=excelPrestationLines(data);
+  var importRow={
+    'ID demande':requestId,'Cliente':nomComplet,'Prénom':data.prenom||'','Nom':data.nom||'',
+    'Date mariage':data.dateMariage||'','Lieu':data.ville||'','E-mail':data.email||'','Téléphone':data.tel||'',
+    'Style':data.style||'','Couleurs':data.couleurs||'','Prestations':prestationLines.join(' ; '),
+    'Autre demande':data.autrePrestation||'','Fleurs premium / aimées':data.fleursAimees||'',
+    'RDV téléphonique':data.souhaiteRdvTelephonique==='oui'?'Oui':'Non','Date RDV':data.rdvDateSouhaitee||'',
+    'Heure RDV':data.rdvHeureSouhaitee||'','Nb inspirations':photos.length
+  };
+  var fiche=[
+    ['DEMANDE MARIAGE — L’ATELIER FLEURS & SENS',''],['',''],['ID demande',requestId],['Cliente',nomComplet],
+    ['E-mail',data.email||''],['Téléphone',data.tel||''],['Date du mariage',excelDateFR(data.dateMariage)],['Ville / lieu',data.ville||''],
+    ['Style',data.style||''],['Couleurs',data.couleurs||''],['Prestations',prestationLines.join('\n')],['Autre demande',data.autrePrestation||''],
+    ['Fleurs premium / aimées',data.fleursAimees||''],['RDV téléphonique',data.souhaiteRdvTelephonique==='oui'?'Oui':'Non'],
+    ['Date RDV',excelDateFR(data.rdvDateSouhaitee)],['Heure RDV',data.rdvHeureSouhaitee||''],['Inspirations',photos.length+' photo(s)']
+  ];
+  var inspirations=photos.map(function(p,i){p=p||{};return {'Cliente':nomComplet,'Date mariage':data.dateMariage||'','Fichier':p.name||('inspiration_'+(i+1)),'Lien inspiration':p.url||p.downloadURL||'','Chemin Firebase':p.storagePath||p.path||''};});
+  var wb=XLSX.utils.book_new(),wsImport=XLSX.utils.json_to_sheet([importRow]),wsFiche=XLSX.utils.aoa_to_sheet(fiche),wsInsp=XLSX.utils.json_to_sheet(inspirations.length?inspirations:[{'Cliente':nomComplet,'Date mariage':data.dateMariage||'','Fichier':'','Lien inspiration':'','Chemin Firebase':''}]);
+  wsImport['!cols']=[{wch:30},{wch:28},{wch:18},{wch:18},{wch:16},{wch:28},{wch:32},{wch:18},{wch:22},{wch:28},{wch:70},{wch:55},{wch:55},{wch:18},{wch:16},{wch:14},{wch:16}];
+  wsFiche['!cols']=[{wch:28},{wch:80}];wsInsp['!cols']=[{wch:28},{wch:16},{wch:32},{wch:90},{wch:90}];
+  XLSX.utils.book_append_sheet(wb,wsImport,'IMPORT');XLSX.utils.book_append_sheet(wb,wsFiche,'Fiche demande');XLSX.utils.book_append_sheet(wb,wsInsp,'Inspirations');
+  var base64=XLSX.write(wb,{bookType:'xlsx',type:'base64'});
+  var fileName='Demande_mariage_'+excelSafeName(nomComplet).replace(/\s+/g,'_')+'_'+String(data.dateMariage||'sans-date').replace(/-/g,'')+'.xlsx';
+  return {name:fileName,content:base64};
+}
+
 async function envoyerNotificationNouvelleDemande(data){
   var d=notificationDetails(data);
   var rdvOui=data.souhaiteRdvTelephonique==='oui';
@@ -566,8 +605,9 @@ async function envoyerNotificationNouvelleDemande(data){
       '<div style="font-size:15px;line-height:1.7;"><strong>Souhaité :</strong> '+(rdvOui?'Oui':'Non')+'</div>'+
       (rdvOui?'<div style="font-size:15px;line-height:1.7;"><strong>Créneau :</strong> '+formatDateEmail(data.rdvDateSouhaitee)+' à '+emailEsc(data.rdvHeureSouhaitee||'Non renseignée')+'</div>':'')+
     '</div>'+
-    '<p style="margin:22px 0 0;color:#6f2638;font-weight:700;line-height:1.5;">La demande est disponible dans MyBusiness, rubrique « Demandes mariage ».</p>';
-  var payload={email:NOTIFICATION_EMAIL,nom:'L’Atelier Fleurs & Sens',sujet:'🌸 Nouvelle demande mariage — '+d.nomComplet,message:emailShell('🌸 Nouvelle demande mariage','Une nouvelle cliente vient de transmettre son projet',content)};
+    '<p style="margin:22px 0 0;color:#6f2638;font-weight:700;line-height:1.5;">Le fichier Excel complet de cette demande est joint à cet e-mail. La demande reste également disponible dans MyBusiness, rubrique « Demandes mariage ».</p>';
+  var excelAttachment=buildDemandeExcelAttachment(data);
+  var payload={email:NOTIFICATION_EMAIL,nom:'L’Atelier Fleurs & Sens',sujet:'🌸 Nouvelle demande mariage — '+d.nomComplet,message:emailShell('🌸 Nouvelle demande mariage','Une nouvelle cliente vient de transmettre son projet',content),attachment:excelAttachment,attachments:[excelAttachment]};
   var res=await fetch(MAIL_WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
   if(!res.ok){throw new Error((await res.text())||('Erreur HTTP '+res.status));}
 }
