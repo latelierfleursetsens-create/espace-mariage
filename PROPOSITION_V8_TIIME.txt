@@ -1,0 +1,31 @@
+PROPOSITION V8 — ESPACE MARIAGE + TIIME
+L’Atelier Fleurs & Sens
+
+OBJECTIF
+L’espace mariage devient uniquement un espace de préparation et de suivi du mariage.
+Les devis, factures et règlements sont gérés et envoyés par e-mail via TIIME.
+
+CHANGEMENTS DANS L’ESPACE MARIAGE
+- Nouvelle présentation graphique de l’accueil.
+- Navigation simplifiée : Accueil / Ma fiche mariage / Mon planning.
+- Suppression de l’onglet Devis et factures.
+- Suppression de la consultation des PDF dans l’espace.
+- Suppression de la validation de devis en ligne.
+- Suppression de la demande de modification d’un devis depuis l’espace.
+- Carte d’information TIIME sur le tableau de bord.
+- Avancement du dossier basé sur le statut de la fiche mariage synchronisé depuis MyBusiness, et non plus sur les documents du portail.
+
+CONSERVÉ SANS CHANGEMENT DE PRINCIPE
+- Compte client / connexion Google ou e-mail.
+- Création et modification de la demande mariage.
+- Besoins et quantités.
+- Guides de tailles et tarifs.
+- Inspirations / photos.
+- Demande de rendez-vous téléphonique.
+- Vérification avant envoi.
+- E-mails liés à la fiche et à ses modifications.
+- Planning : RDV, livraison/retrait, date du mariage.
+- Synchronisation avec MyBusiness via portalProjects.
+
+APERCU
+Le fichier APERCU_PROPOSITION.html permet de visualiser la nouvelle page d’accueil avec des données fictives, sans connexion Firebase.

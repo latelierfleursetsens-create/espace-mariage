@@ -1,0 +1,10 @@
+MISE À JOUR — 20/08/2026
+
+Fiche mariage cliente :
+- ajout du champ obligatoire « Adresse postale » ;
+- ajout du champ obligatoire « Code postal » ;
+- le code postal est validé sur 5 chiffres ;
+- le champ « Ville » existant est conservé sans autre changement ;
+- adresse et code postal sont enregistrés dans portalProjects ;
+- ils apparaissent dans la vérification avant envoi, les e-mails récapitulatifs et l'export Excel ;
+- les modifications de ces champs apparaissent dans l'historique des modifications clientes.
