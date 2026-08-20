@@ -1,0 +1,7 @@
+MISE À JOUR — E-MAILS NOUVELLE DEMANDE
+
+- Le mail reçu par L’Atelier Fleurs & Sens affiche désormais les fleurs premium choisies et leur quantité.
+  Exemple : Rose stabilisée × 3, Pivoine × 2.
+- Le mail récapitulatif envoyé à la cliente affiche également cette sélection.
+- L’export Excel joint au mail conserve la ligne « Fleurs premium / aimées » avec les quantités.
+- Aucun changement n’est nécessaire dans le Worker d’envoi des e-mails : le même endpoint est utilisé.

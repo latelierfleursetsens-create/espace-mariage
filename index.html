@@ -603,6 +603,7 @@ function buildDemandeExcelAttachment(data){
 async function envoyerNotificationNouvelleDemande(data){
   var d=notificationDetails(data);
   var rdvOui=data.souhaiteRdvTelephonique==='oui';
+  var premiumText=data.fleursAimees||premiumFlowersText(data.fleursPremium||[],data.fleursPremiumAutre||'',data.fleursPremiumQuantites||{});
   var prestationHtml=d.prestations.length
     ? '<ul style="margin:8px 0 0;padding-left:20px;line-height:1.7;">'+d.prestations.map(function(x){return '<li>'+emailEsc(x)+'</li>';}).join('')+'</ul>'
     : '<div style="color:#7b6a70;">Non renseignées</div>';
@@ -623,6 +624,10 @@ async function envoyerNotificationNouvelleDemande(data){
     '<div style="border:1px solid #eaded8;border-radius:14px;padding:18px 20px;margin-bottom:18px;">'+
       '<div style="font-family:Georgia,serif;color:#6f2638;font-size:20px;font-weight:700;margin-bottom:10px;">💐 Prestations demandées</div>'+prestationHtml+
     '</div>'+
+    '<div style="border:1px solid #eaded8;border-radius:14px;padding:18px 20px;margin-bottom:18px;background:#fffaf8;">'+
+      '<div style="font-family:Georgia,serif;color:#6f2638;font-size:20px;font-weight:700;margin-bottom:10px;">🌸 Fleurs premium choisies</div>'+
+      '<div style="font-size:15px;line-height:1.7;font-weight:700;">'+emailEsc(premiumText||'Aucune sélection')+'</div>'+
+    '</div>'+
     '<div style="border:1px solid #eaded8;border-radius:14px;padding:18px 20px;background:#fffaf8;">'+
       '<div style="font-family:Georgia,serif;color:#6f2638;font-size:20px;font-weight:700;margin-bottom:12px;">📞 Rendez-vous téléphonique</div>'+
       '<div style="font-size:15px;line-height:1.7;"><strong>Souhaité :</strong> '+(rdvOui?'Oui':'Non')+'</div>'+
@@ -637,6 +642,7 @@ async function envoyerNotificationNouvelleDemande(data){
 async function envoyerRecapitulatifCliente(data){
   var d=notificationDetails(data),portalUrl="https://mariage.latelierfleursetsens.fr";
   var prestations=d.prestations.length?d.prestations.map(function(x){return '<li style="margin:0 0 7px;">'+emailEsc(x)+'</li>';}).join(''):'<li>Aucune prestation sélectionnée</li>';
+  var premiumText=data.fleursAimees||premiumFlowersText(data.fleursPremium||[],data.fleursPremiumAutre||'',data.fleursPremiumQuantites||{});
   var rdv=data.souhaiteRdvTelephonique==='oui'
     ? '<div style="margin-top:16px;padding:15px;border-radius:12px;background:#fff7f3;border:1px solid #eadfd8;"><b style="color:#6f2638;">📞 Rendez-vous téléphonique souhaité</b><br><span style="line-height:1.7;">'+emailEsc(formatDateEmail(data.rdvDateSouhaitee))+' à '+emailEsc(data.rdvHeureSouhaitee||'Non renseignée')+'</span></div>'
     : '<div style="margin-top:16px;padding:15px;border-radius:12px;background:#fff7f3;border:1px solid #eadfd8;"><b style="color:#6f2638;">📞 Rendez-vous téléphonique :</b> non demandé</div>';
@@ -659,9 +665,13 @@ async function envoyerRecapitulatifCliente(data){
     '</div>'+
     '<div style="margin-top:16px;padding:18px;border-radius:14px;background:#fffaf8;border:1px solid #eadfd8;">'+
       '<h3 style="margin:0 0 12px;color:#6f2638;font-size:18px;">💐 Créations demandées</h3><ul style="margin:0;padding-left:20px;line-height:1.55;">'+prestations+'</ul>'+
+    '</div>'+
+    '<div style="margin-top:16px;padding:18px;border-radius:14px;background:#fffaf8;border:1px solid #eadfd8;">'+
+      '<h3 style="margin:0 0 12px;color:#6f2638;font-size:18px;">🌸 Fleurs premium choisies</h3>'+
+      '<div style="font-size:15px;line-height:1.65;font-weight:700;">'+emailEsc(premiumText||'Aucune sélection')+'</div>'+
     '</div>'+rdv+
     '<div style="text-align:center;margin:26px 0 8px;"><a href="'+emailEsc(portalUrl)+'" style="display:inline-block;background:#6f2638;color:#ffffff;text-decoration:none;font-weight:700;padding:14px 22px;border-radius:10px;">Accéder à mon espace mariage</a></div>'+
-    '<p style="margin:16px 0 0;color:#806f75;font-size:13px;line-height:1.55;text-align:center;">Conservez cet e-mail : ce lien vous permettra de revenir à votre espace pour consulter votre planning, vos devis et vos factures.</p>';
+    '<p style="margin:16px 0 0;color:#806f75;font-size:13px;line-height:1.55;text-align:center;">Conservez cet e-mail : ce lien vous permettra de revenir à votre espace pour consulter votre fiche mariage et votre planning.</p>';
   var payload={email:data.email,nom:data.prenom||data.nom||'Cliente',sujet:'🌸 Votre demande de mariage a bien été reçue',message:clientEmailShell('🌸 Votre demande est bien enregistrée','Voici le récapitulatif des informations transmises',content)};
   var res=await fetch(MAIL_WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
   if(!res.ok){throw new Error((await res.text())||('Erreur HTTP '+res.status));}
