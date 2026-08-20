@@ -572,9 +572,12 @@ function buildDemandeExcelAttachment(data){
   var photos=Array.isArray(data.photos)?data.photos:[];
   var requestId=String(data.ownerUid||((typeof current!=='undefined'&&current&&current.uid)?current.uid:'')||('demande_'+Date.now()));
   var prestationLines=excelPrestationLines(data);
+  // IMPORTANT : l'ordre A:Q doit rester strictement compatible avec le fichier
+  // Gestion Mariages. Les anciennes colonnes Prénom/Nom de l'onglet IMPORT,
+  // inutilisées par les macros de transfert, accueillent maintenant Adresse et Code postal.
   var importRow={
-    'ID demande':requestId,'Cliente':nomComplet,'Prénom':data.prenom||'','Nom':data.nom||'',
-    'Date mariage':data.dateMariage||'','Adresse postale':data.adressePostale||'','Code postal':data.codePostal||'','Lieu':data.ville||'','E-mail':data.email||'','Téléphone':data.tel||'',
+    'ID demande':requestId,'Cliente':nomComplet,'Adresse postale':data.adressePostale||'','Code postal':data.codePostal||'',
+    'Date mariage':data.dateMariage||'','Lieu':data.ville||'','E-mail':data.email||'','Téléphone':data.tel||'',
     'Style':data.style||'','Couleurs':data.couleurs||'','Prestations':prestationLines.join(' ; '),
     'Autre demande':data.autrePrestation||'','Fleurs premium / aimées':data.fleursAimees||'',
     'RDV téléphonique':data.souhaiteRdvTelephonique==='oui'?'Oui':'Non','Date RDV':data.rdvDateSouhaitee||'',
@@ -589,7 +592,7 @@ function buildDemandeExcelAttachment(data){
   ];
   var inspirations=photos.map(function(p,i){p=p||{};return {'Cliente':nomComplet,'Date mariage':data.dateMariage||'','Fichier':p.name||('inspiration_'+(i+1)),'Lien inspiration':p.url||p.downloadURL||'','Chemin Firebase':p.storagePath||p.path||''};});
   var wb=XLSX.utils.book_new(),wsImport=XLSX.utils.json_to_sheet([importRow]),wsFiche=XLSX.utils.aoa_to_sheet(fiche),wsInsp=XLSX.utils.json_to_sheet(inspirations.length?inspirations:[{'Cliente':nomComplet,'Date mariage':data.dateMariage||'','Fichier':'','Lien inspiration':'','Chemin Firebase':''}]);
-  wsImport['!cols']=[{wch:30},{wch:28},{wch:18},{wch:18},{wch:16},{wch:28},{wch:32},{wch:18},{wch:22},{wch:28},{wch:70},{wch:55},{wch:55},{wch:18},{wch:16},{wch:14},{wch:16}];
+  wsImport['!cols']=[{wch:30},{wch:28},{wch:32},{wch:14},{wch:16},{wch:24},{wch:32},{wch:18},{wch:22},{wch:28},{wch:70},{wch:55},{wch:55},{wch:18},{wch:16},{wch:14},{wch:16}];
   wsFiche['!cols']=[{wch:28},{wch:80}];wsInsp['!cols']=[{wch:28},{wch:16},{wch:32},{wch:90},{wch:90}];
   XLSX.utils.book_append_sheet(wb,wsImport,'IMPORT');XLSX.utils.book_append_sheet(wb,wsFiche,'Fiche demande');XLSX.utils.book_append_sheet(wb,wsInsp,'Inspirations');
   var base64=XLSX.write(wb,{bookType:'xlsx',type:'base64'});

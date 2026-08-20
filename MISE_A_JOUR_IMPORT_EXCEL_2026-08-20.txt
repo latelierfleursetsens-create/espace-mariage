@@ -1,0 +1,31 @@
+MISE À JOUR IMPORT EXCEL — 20/08/2026
+
+Objectif
+- conserver le fonctionnement actuel du bouton d'import du fichier Gestion Mariages ;
+- ajouter Adresse postale et Code postal sans décaler les colonnes ;
+- éviter toute modification des macros VBA existantes.
+
+Nouvel ordre de l'onglet IMPORT du fichier joint à l'e-mail :
+A ID demande
+B Cliente
+C Adresse postale
+D Code postal
+E Date mariage
+F Lieu
+G E-mail
+H Téléphone
+I Style
+J Couleurs
+K Prestations
+L Autre demande
+M Fleurs premium / aimées
+N RDV téléphonique
+O Date RDV
+P Heure RDV
+Q Nb inspirations
+
+Les colonnes C et D remplacent Prénom et Nom uniquement dans l'onglet technique IMPORT.
+Le nom complet reste disponible en B (Cliente), et le prénom/nom restent enregistrés dans Firebase / MyBusiness.
+
+Le fichier Gestion Mariages associé récupère automatiquement C/D dans les colonnes
+Adresse postale / Code postal de l'onglet Mariages.
