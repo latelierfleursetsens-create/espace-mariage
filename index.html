@@ -361,7 +361,20 @@ async function loadProject(){
   renderPlanning();
   renderDashboard();
 }
-function rdvDateIndisponible(dateValue){return !!dateValue&&dateValue>='2026-08-24'&&dateValue<='2026-09-06'}
+function rdvDateIndisponible(dateValue){
+  if(!dateValue)return false;
+  return (dateValue>='2026-08-24'&&dateValue<='2026-09-06')||
+         (dateValue>='2026-09-17'&&dateValue<='2026-09-20')||
+         dateValue==='2026-11-14'||
+         (dateValue>='2026-11-20'&&dateValue<='2026-11-22');
+}
+function rdvIndisponibiliteMessage(dateValue){
+  if(dateValue>='2026-08-24'&&dateValue<='2026-09-06')return 'Indisponible du 24 août au 6 septembre inclus';
+  if(dateValue>='2026-09-17'&&dateValue<='2026-09-20')return 'Indisponible du 17 au 20 septembre inclus';
+  if(dateValue==='2026-11-14')return 'Indisponible le samedi 14 novembre';
+  if(dateValue>='2026-11-20'&&dateValue<='2026-11-22')return 'Indisponible du 20 au 22 novembre inclus';
+  return 'Date indisponible';
+}
 function rdvHoursForDate(dateValue){
   if(!dateValue||rdvDateIndisponible(dateValue))return [];
   var d=new Date(dateValue+'T12:00:00');
@@ -379,9 +392,10 @@ function updateRdvHours(dateValue,selected){
   var select=$('rdvHeureSouhaitee'),dateInput=$('rdvDateSouhaitee');if(!select)return;
   if(dateInput)dateInput.setCustomValidity('');
   if(rdvDateIndisponible(dateValue)){
-    select.innerHTML='<option value="">Indisponible du 24 août au 6 septembre inclus</option>';
-    if(dateInput)dateInput.setCustomValidity('Aucun rendez-vous téléphonique n’est disponible du 24 août au 6 septembre 2026 inclus.');
-    $('rdvHelp').textContent='Cette période est indisponible. Merci de choisir une date avant le 24 août ou à partir du 7 septembre.';
+    var indispoMessage=rdvIndisponibiliteMessage(dateValue);
+    select.innerHTML='<option value="">'+indispoMessage+'</option>';
+    if(dateInput)dateInput.setCustomValidity('Aucun rendez-vous téléphonique n’est disponible à cette date.');
+    $('rdvHelp').textContent=indispoMessage+'. Merci de choisir une autre date.';
     return;
   }
   var hours=rdvHoursForDate(dateValue);
