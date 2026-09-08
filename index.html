@@ -76,7 +76,7 @@ body{background:linear-gradient(180deg,#fbf7f4 0,#f7f1ed 45%,#fbf8f6 100%);}
 <article class="dash-card"><span class="card-kicker">PROCHAINE ÉTAPE</span><div id="dashNextDate" class="dash-value">À définir</div><p id="dashNextDateDetail" class="muted"></p><div class="quick-actions"><button class="btn soft" type="button" data-go="planning">Consulter mes dates</button></div></article>
 <article class="dash-card tiime-card"><span class="card-kicker">DEVIS • FACTURES • RÈGLEMENTS</span><div class="tiime-title">Vos documents arrivent par e-mail 💌</div><p>Les devis et factures sont désormais envoyés directement par <strong>TIIME</strong>. Ils ne sont plus déposés ni validés dans cet espace mariage.</p><p class="muted tiime-note">Pensez à conserver les e-mails TIIME reçus pour retrouver vos documents et informations de règlement.</p></article></div>
 <div class="dashboard-footer-note"><span>🌸</span><p><strong>6 à 8 semaines avant votre mariage</strong>, Élodie revient vers vous pour la proposition de bouquet et les derniers détails de votre commande.</p></div></div></section>
-<section id="projectView" class="card hidden"><h2>Mon projet</h2><form id="projectForm"><div class="grid"><label>Prénom *<input name="prenom" required></label><label>Nom *<input name="nom" required></label><label>Adresse e-mail de connexion<input name="emailClient" type="email" readonly aria-readonly="true" style="background:#f7f3f1;color:#6f6267"></label><label>Téléphone *<input name="tel" required></label><label>Date du mariage *<input name="dateMariage" type="date" required></label><label>Adresse postale *<input name="adressePostale" autocomplete="street-address" required></label><label>Code postal *<input name="codePostal" inputmode="numeric" autocomplete="postal-code" maxlength="5" pattern="[0-9]{5}" title="Saisissez un code postal à 5 chiffres" required></label><label>Ville<input name="ville" autocomplete="address-level2"></label><label>Style<input name="style"></label><label>Couleurs<input name="couleurs"></label></div><h2>Mes besoins</h2><div class="needs-guide"><h3>👰 Choisir la taille de mon bouquet de mariée</h3><p>Ces visuels vous permettent de comparer les dimensions, le rendu porté et les tarifs de votre bouquet.</p><div class="guide-images"><figure class="guide-image-card guide-image-card--dimensions"><img src="assets/guide-tailles-bouquets.jpg" alt="Comparatif des tailles de bouquets de mariée S, M, L et XL"><figcaption>Dimensions des bouquets</figcaption></figure><figure class="guide-image-card guide-image-card--portees"><img src="assets/guide-tailles-portees.jpg" alt="Comparatif porté des tailles de bouquets de mariée S, M, L et XL"><figcaption>Rendu des bouquets portés</figcaption></figure><figure class="guide-image-card guide-image-card--tarifs"><img src="assets/guide-tarifs-bouquets.png?v=20260905" alt="Plaquette tarifaire des bouquets de mariée et fleurs premium stabilisées"><figcaption>Tarifs des bouquets et fleurs premium stabilisées</figcaption></figure></div><p class="muted" style="margin-top:12px">Les dimensions sont données à titre indicatif. Chaque bouquet est réalisé à la main et peut légèrement varier selon les fleurs sélectionnées.</p></div><div id="choices"></div><section class="other-request-section"><h3>📝 Autres demandes</h3><p>Votre besoin ne figure pas dans la liste ou vous souhaitez ajouter une précision ? Décrivez-le librement ci-dessous.</p><label>Votre demande complémentaire<textarea name="autrePrestation" maxlength="1500" placeholder="Ex. : création particulière, couleur spécifique, adaptation d’un accessoire, précision utile pour votre projet..."></textarea></label></section><h2>Inspirations</h2><input id="photos" type="file" accept="image/*" multiple><p class="muted">Vous pouvez sélectionner plusieurs photos à la fois ou en ajouter d’autres ensuite (6 maximum).</p><p id="photoMsg" class="muted"></p><div id="photosList" class="photos" style="margin-top:12px"></div><div class="rdv-box"><div class="rdv-title">Souhaitez-vous un rendez-vous téléphonique avec Élodie pour affiner votre projet ?</div><div class="rdv-options"><label><input type="radio" name="souhaiteRdvTelephonique" value="oui" required> Oui</label><label><input type="radio" name="souhaiteRdvTelephonique" value="non" required> Non</label></div><div class="availability"><b>Créneaux disponibles :</b><br>• Du samedi au lundi : de 9 h à 20 h<br>• Du mardi au vendredi : de 18 h à 20 h<br>• Aucun rendez-vous possible du 24 août au 6 septembre 2026 inclus.</div><div id="rdvDetails" class="rdv-details hidden"><div class="grid"><label>Date souhaitée *<input type="date" name="rdvDateSouhaitee" id="rdvDateSouhaitee"></label><label>Heure souhaitée *<select name="rdvHeureSouhaitee" id="rdvHeureSouhaitee"><option value="">Choisissez d’abord une date</option></select></label></div><p id="rdvHelp" class="muted rdv-help">Les horaires proposés s’adaptent automatiquement au jour choisi.</p></div></div><button class="btn primary" style="margin-top:16px">Vérifier ma demande</button><p id="saveMsg" class="muted"></p></form></section>
+<section id="projectView" class="card hidden"><h2>Mon projet</h2><form id="projectForm"><div class="grid"><label>Prénom *<input name="prenom" required></label><label>Nom *<input name="nom" required></label><label>Pseudo utilisé pour nos échanges *<input name="pseudoReseau" placeholder="Ex. : @votrepseudo" required></label><label>Réseau social utilisé pour nos échanges *<select name="reseauSocial" required><option value="">Sélectionnez</option><option value="Instagram">Instagram</option><option value="Facebook / Messenger">Facebook / Messenger</option><option value="TikTok">TikTok</option><option value="WhatsApp">WhatsApp</option><option value="Autre">Autre</option></select></label><label>Adresse e-mail de connexion<input name="emailClient" type="email" readonly aria-readonly="true" style="background:#f7f3f1;color:#6f6267"></label><label>Téléphone *<input name="tel" required></label><label>Date du mariage *<input name="dateMariage" type="date" required></label><label>Adresse postale *<input name="adressePostale" autocomplete="street-address" required></label><label>Code postal *<input name="codePostal" inputmode="numeric" autocomplete="postal-code" maxlength="5" pattern="[0-9]{5}" title="Saisissez un code postal à 5 chiffres" required></label><label>Ville<input name="ville" autocomplete="address-level2"></label><label>Style<input name="style"></label><label>Couleurs<input name="couleurs"></label></div><h2>Mes besoins</h2><div class="needs-guide"><h3>👰 Choisir la taille de mon bouquet de mariée</h3><p>Ces visuels vous permettent de comparer les dimensions, le rendu porté et les tarifs de votre bouquet.</p><div class="guide-images"><figure class="guide-image-card guide-image-card--dimensions"><img src="assets/guide-tailles-bouquets.jpg" alt="Comparatif des tailles de bouquets de mariée S, M, L et XL"><figcaption>Dimensions des bouquets</figcaption></figure><figure class="guide-image-card guide-image-card--portees"><img src="assets/guide-tailles-portees.jpg" alt="Comparatif porté des tailles de bouquets de mariée S, M, L et XL"><figcaption>Rendu des bouquets portés</figcaption></figure><figure class="guide-image-card guide-image-card--tarifs"><img src="assets/guide-tarifs-bouquets.png" alt="Plaquette tarifaire des bouquets de mariée et fleurs premium stabilisées"><figcaption>Tarifs des bouquets et fleurs premium stabilisées</figcaption></figure></div><p class="muted" style="margin-top:12px">Les dimensions sont données à titre indicatif. Chaque bouquet est réalisé à la main et peut légèrement varier selon les fleurs sélectionnées.</p></div><div id="choices"></div><section class="other-request-section"><h3>📝 Autres demandes</h3><p>Votre besoin ne figure pas dans la liste ou vous souhaitez ajouter une précision ? Décrivez-le librement ci-dessous.</p><label>Votre demande complémentaire<textarea name="autrePrestation" maxlength="1500" placeholder="Ex. : création particulière, couleur spécifique, adaptation d’un accessoire, précision utile pour votre projet..."></textarea></label></section><h2>Inspirations</h2><div style="margin:10px 0 14px;padding:14px 16px;border:1px solid #d9b9a7;border-radius:12px;background:#fff3ec;color:#6f2638;line-height:1.55;font-weight:700;">📷 Les photos d’inspiration sont fortement recommandées. Elles nous aident à mieux comprendre vos envies et à ajuster au plus juste votre futur devis.</div><input id="photos" type="file" accept="image/*,.jpg,.jpeg,.png,.webp,.heic,.heif" multiple><p class="muted">Vous pouvez sélectionner plusieurs photos à la fois ou en ajouter d’autres ensuite (6 maximum).</p><p id="photoMsg" class="muted"></p><div id="photosList" class="photos" style="margin-top:12px"></div><div class="rdv-box"><div class="rdv-title">Souhaitez-vous un rendez-vous téléphonique avec Élodie pour affiner votre projet ?</div><div class="rdv-options"><label><input type="radio" name="souhaiteRdvTelephonique" value="oui" required> Oui</label><label><input type="radio" name="souhaiteRdvTelephonique" value="non" required> Non</label></div><div class="availability"><b>Créneaux disponibles :</b><br>• Du samedi au lundi : de 9 h à 20 h<br>• Du mardi au vendredi : de 18 h à 20 h<br>• Aucun rendez-vous possible du 24 août au 6 septembre 2026 inclus.</div><div id="rdvDetails" class="rdv-details hidden"><div class="grid"><label>Date souhaitée *<input type="date" name="rdvDateSouhaitee" id="rdvDateSouhaitee"></label><label>Heure souhaitée *<select name="rdvHeureSouhaitee" id="rdvHeureSouhaitee"><option value="">Choisissez d’abord une date</option></select></label></div><p id="rdvHelp" class="muted rdv-help">Les horaires proposés s’adaptent automatiquement au jour choisi.</p></div></div><button class="btn primary" style="margin-top:16px">Vérifier ma demande</button><p id="saveMsg" class="muted"></p></form></section>
 <section id="planningView" class="card hidden"><h2>Mon planning</h2><p class="muted">Retrouvez les principales dates de votre projet. Les informations sont mises à jour par Élodie depuis votre dossier mariage.</p><div class="planning-list"><div class="milestone"><div class="milestone-icon">☎️</div><div><h3>Rendez-vous téléphonique</h3><div id="planPhoneDate" class="milestone-date">Aucun rendez-vous demandé</div><div id="planPhoneDetail" class="muted"></div></div></div><div class="milestone"><div class="milestone-icon">📦</div><div><h3>Livraison ou retrait</h3><div id="planDeliveryDate" class="milestone-date">À confirmer avec Élodie</div><div id="planDeliveryDetail" class="muted"></div></div></div><div class="milestone"><div class="milestone-icon">💍</div><div><h3>Date du mariage</h3><div id="planWeddingDate" class="milestone-date">À renseigner</div><div id="planWeddingDetail" class="muted"></div></div></div></div></section>
 </section></main><div id="successModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="successTitle"><div class="modal-box"><h2 id="successTitle">Merci 🌸</h2><p>Merci pour toutes ces informations, Élodie revient vers vous dans les plus brefs délais.</p><button type="button" class="btn primary" id="closeSuccessModal">Fermer</button></div></div><div id="requestReviewModal" class="modal-overlay request-review-modal hidden" role="dialog" aria-modal="true" aria-labelledby="requestReviewTitle"><div class="modal-box"><h2 id="requestReviewTitle">Vérifiez votre demande</h2><p class="request-review-intro">Relisez les informations ci-dessous avant de les transmettre à L’Atelier Fleurs & Sens.</p><div id="requestReviewContent"></div><p id="requestReviewMsg" class="muted" style="text-align:center"></p><div class="request-review-actions"><button type="button" class="btn soft" id="editRequestReview">← Modifier ma demande</button><button type="button" class="btn primary" id="confirmRequestReview">Confirmer et envoyer</button></div></div></div><script src="js/mariage-creations.js?v=7.3.3-prod"></script><script>
 var config={apiKey:"AIzaSyCPuUcFt99zQsUI1lBDSEZkX-RJHtgs5BY",authDomain:"l-atelier-fleurs-et-sens.firebaseapp.com",projectId:"l-atelier-fleurs-et-sens",storageBucket:"l-atelier-fleurs-et-sens.firebasestorage.app",messagingSenderId:"520271601373",appId:"1:520271601373:web:150541ed9bf7091b804534"};// Application Firebase nommée pour isoler totalement la session cliente de MyBusiness.
@@ -323,7 +323,7 @@ async function loadProject(){
   var snap=await db.collection('portalProjects').doc(current.uid).get();
   project=snap.exists?snap.data():{ownerUid:current.uid,email:current.email,photos:[]};
   var f=$('projectForm');
-  ['prenom','nom','tel','dateMariage','adressePostale','codePostal','ville','style','couleurs','autrePrestation'].forEach(function(k){if(f.elements[k])f.elements[k].value=project[k]||''});
+  ['prenom','nom','pseudoReseau','reseauSocial','tel','dateMariage','adressePostale','codePostal','ville','style','couleurs','autrePrestation'].forEach(function(k){if(f.elements[k])f.elements[k].value=project[k]||''});
   if(f.elements.emailClient)f.elements.emailClient.value=(current&&current.email)||project.email||'';
   var storedQuantities=project.prestationQuantites||{};
   Array.from(f.querySelectorAll('[data-qty-item]')).forEach(function(input){
@@ -361,20 +361,7 @@ async function loadProject(){
   renderPlanning();
   renderDashboard();
 }
-function rdvDateIndisponible(dateValue){
-  if(!dateValue)return false;
-  return (dateValue>='2026-08-24'&&dateValue<='2026-09-06')||
-         (dateValue>='2026-09-17'&&dateValue<='2026-09-20')||
-         dateValue==='2026-11-14'||
-         (dateValue>='2026-11-20'&&dateValue<='2026-11-22');
-}
-function rdvIndisponibiliteMessage(dateValue){
-  if(dateValue>='2026-08-24'&&dateValue<='2026-09-06')return 'Indisponible du 24 août au 6 septembre inclus';
-  if(dateValue>='2026-09-17'&&dateValue<='2026-09-20')return 'Indisponible du 17 au 20 septembre inclus';
-  if(dateValue==='2026-11-14')return 'Indisponible le samedi 14 novembre';
-  if(dateValue>='2026-11-20'&&dateValue<='2026-11-22')return 'Indisponible du 20 au 22 novembre inclus';
-  return 'Date indisponible';
-}
+function rdvDateIndisponible(dateValue){return !!dateValue&&dateValue>='2026-08-24'&&dateValue<='2026-09-06'}
 function rdvHoursForDate(dateValue){
   if(!dateValue||rdvDateIndisponible(dateValue))return [];
   var d=new Date(dateValue+'T12:00:00');
@@ -392,10 +379,9 @@ function updateRdvHours(dateValue,selected){
   var select=$('rdvHeureSouhaitee'),dateInput=$('rdvDateSouhaitee');if(!select)return;
   if(dateInput)dateInput.setCustomValidity('');
   if(rdvDateIndisponible(dateValue)){
-    var indispoMessage=rdvIndisponibiliteMessage(dateValue);
-    select.innerHTML='<option value="">'+indispoMessage+'</option>';
-    if(dateInput)dateInput.setCustomValidity('Aucun rendez-vous téléphonique n’est disponible à cette date.');
-    $('rdvHelp').textContent=indispoMessage+'. Merci de choisir une autre date.';
+    select.innerHTML='<option value="">Indisponible du 24 août au 6 septembre inclus</option>';
+    if(dateInput)dateInput.setCustomValidity('Aucun rendez-vous téléphonique n’est disponible du 24 août au 6 septembre 2026 inclus.');
+    $('rdvHelp').textContent='Cette période est indisponible. Merci de choisir une date avant le 24 août ou à partir du 7 septembre.';
     return;
   }
   var hours=rdvHoursForDate(dateValue);
@@ -428,30 +414,6 @@ function inferImageType(file){
   if(/\.heic$/.test(name))return 'image/heic';
   if(/\.heif$/.test(name))return 'image/heif';
   return '';
-}
-function readFileBytesImmediately(file){
-  return new Promise(function(resolve,reject){
-    if(!file)return reject(new Error('Aucun fichier reçu.'));
-    if(file.size<=0)return reject(new Error('La photo « '+(file.name||'photo')+' » est vide ou n’est pas encore téléchargée sur le téléphone. Ouvrez-la dans Google Photos / Galerie, attendez son affichage complet puis réessayez.'));
-    if(file.size>20*1024*1024)return reject(new Error('La photo « '+(file.name||'photo')+' » est trop lourde (20 Mo maximum avant réduction).'));
-    var reader=new FileReader();
-    reader.onerror=function(){
-      var err=reader.error;
-      var detail=err&&err.name?(' ('+err.name+')'):'';
-      reject(new Error('Impossible de lire « '+(file.name||'photo')+' »'+detail+'. Sur Android, ouvrez d’abord la photo dans Google Photos / Galerie pour la télécharger sur le téléphone, puis réessayez.'));
-    };
-    reader.onload=function(){
-      try{
-        var mime=inferImageType(file)||'image/jpeg';
-        var name=file.name||('photo_'+Date.now()+'.jpg');
-        var stable;
-        try{stable=new File([reader.result],name,{type:mime,lastModified:Date.now()});}
-        catch(e){stable=new Blob([reader.result],{type:mime});stable.name=name;}
-        resolve({file:stable,mime:mime,originalName:name});
-      }catch(e){reject(e)}
-    };
-    try{reader.readAsArrayBuffer(file)}catch(e){reject(new Error('Impossible d’ouvrir « '+(file.name||'photo')+' ». Sur Android, téléchargez la photo sur le téléphone puis réessayez.'))}
-  });
 }
 function resizeImageForUpload(file,mime){
   var maxBytes=4.6*1024*1024;
@@ -495,28 +457,22 @@ $('photos').onchange=async e=>{
   var input=e.target,existing=(project.photos||[]).length,selected=Array.from(input.files||[]),available=Math.max(0,6-existing);
   if(!selected.length){$('photoMsg').textContent='Aucune photo n’a été sélectionnée.';return}
   if(!available){$('photoMsg').textContent='La limite de 6 photos est atteinte.';input.value='';return}
-  var sourceFiles=selected.slice(0,available),files=[],errors=[],added=0;photoUploadInProgress=true;input.disabled=true;
+  var files=selected.slice(0,available),errors=[],added=0;photoUploadInProgress=true;input.disabled=true;
   try{
-    $('photoMsg').textContent='Lecture des photos sélectionnées…';
-    var snapshots=await Promise.all(sourceFiles.map(function(f){
-      return readFileBytesImmediately(f).then(function(x){return {ok:true,value:x}}).catch(function(err){return {ok:false,error:err,name:(f&&f.name)||'photo'}});
-    }));
-    snapshots.forEach(function(snap){
-      if(snap.ok)files.push(snap.value);
-      else errors.push((snap.error&&snap.error.message)||('Impossible de lire « '+snap.name+' ».'));
-    });
     for(var i=0;i<files.length;i++){
-      var stable=files[i],f=stable.file,mime=stable.mime,originalName=stable.originalName;
-      if(!mime){errors.push('« '+(originalName||'photo')+' » : format non reconnu. Essayez une capture d’écran.');continue}
+      var f=files[i],mime=inferImageType(f);
+      if(!mime){errors.push('« '+(f.name||'photo')+' » : format non reconnu. Essayez une capture d’écran.');continue}
+      if(f.size<=0){errors.push('« '+f.name+' » : fichier vide ou non téléchargé depuis Google Photos. Ouvrez la photo sur le téléphone puis réessayez.');continue}
+      if(f.size>20*1024*1024){errors.push('« '+f.name+' » : photo trop lourde (20 Mo maximum avant réduction).');continue}
       $('photoMsg').textContent='Préparation de la photo '+(i+1)+' sur '+files.length+'…';
       try{
         var prepared=await resizeImageForUpload(f,mime);
         var unique=Date.now()+'_'+i+'_'+Math.random().toString(36).slice(2,8);
-        var safeName=String(prepared.name||originalName||f.name||'photo').replace(/[^a-zA-Z0-9._-]/g,'_');
+        var safeName=String(prepared.name||f.name||'photo').replace(/[^a-zA-Z0-9._-]/g,'_');
         var path='clientUploads/'+current.uid+'/'+unique+'_'+safeName,ref=storage.ref(path);
         await uploadWithProgress(ref,prepared.blob,{contentType:prepared.mime},function(percent){$('photoMsg').textContent='Envoi de la photo '+(i+1)+' sur '+files.length+' : '+percent+' %';});
-        var url=await ref.getDownloadURL();project.photos=project.photos||[];project.photos.push({name:originalName||f.name||safeName,path:path,url:url});added++;
-      }catch(fileErr){console.error(fileErr);errors.push((fileErr&&fileErr.message)||('Impossible d’ajouter « '+(originalName||f.name||'photo')+' ».'))}
+        var url=await ref.getDownloadURL();project.photos=project.photos||[];project.photos.push({name:f.name||safeName,path:path,url:url});added++;
+      }catch(fileErr){console.error(fileErr);errors.push((fileErr&&fileErr.message)||('Impossible d’ajouter « '+f.name+' ».'))}
     }
     if(added){
       await db.collection('portalProjects').doc(current.uid).set({ownerUid:current.uid,email:current.email,photos:project.photos,clientStatus:project.clientStatus||'draft',createdAt:project.createdAt||firebase.firestore.FieldValue.serverTimestamp(),updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true});
@@ -532,7 +488,7 @@ $('photos').onchange=async e=>{
 };
 function projectComparable(data){
   return {
-    prenom:data.prenom||'',nom:data.nom||'',tel:data.tel||'',dateMariage:data.dateMariage||'',adressePostale:data.adressePostale||'',codePostal:data.codePostal||'',ville:data.ville||'',
+    prenom:data.prenom||'',nom:data.nom||'',pseudoReseau:data.pseudoReseau||'',reseauSocial:data.reseauSocial||'',tel:data.tel||'',dateMariage:data.dateMariage||'',adressePostale:data.adressePostale||'',codePostal:data.codePostal||'',ville:data.ville||'',
     style:data.style||'',couleurs:data.couleurs||'',
     prestations:(data.prestations||[]).slice().sort(),prestationQuantites:Object.keys(data.prestationQuantites||{}).sort().reduce(function(acc,key){acc[key]=Number(data.prestationQuantites[key])||0;return acc;},{}),rubansPersonnalises:Object.keys(data.rubansPersonnalises||{}).sort().reduce(function(acc,key){acc[key]=String(data.rubansPersonnalises[key]||'');return acc;},{}),autrePrestation:data.autrePrestation||'',
     fleursAimees:data.fleursAimees||'',fleursPremium:(data.fleursPremium||[]).slice().sort(),fleursPremiumAutre:data.fleursPremiumAutre||'',fleursPremiumQuantites:Object.keys(data.fleursPremiumQuantites||{}).sort().reduce(function(acc,key){var n=Math.max(0,Number(data.fleursPremiumQuantites[key])||0);if(n>0)acc[key]=n;return acc;},{}),
@@ -629,7 +585,7 @@ function buildDemandeExcelAttachment(data){
   };
   var fiche=[
     ['DEMANDE MARIAGE — L’ATELIER FLEURS & SENS',''],['',''],['ID demande',requestId],['Cliente',nomComplet],
-    ['E-mail',data.email||''],['Téléphone',data.tel||''],['Date du mariage',excelDateFR(data.dateMariage)],['Adresse postale',data.adressePostale||''],['Code postal',data.codePostal||''],['Ville / lieu',data.ville||''],
+    ['Pseudo / identifiant',data.pseudoReseau||''],['Réseau social utilisé',data.reseauSocial||''],['E-mail',data.email||''],['Téléphone',data.tel||''],['Date du mariage',excelDateFR(data.dateMariage)],['Adresse postale',data.adressePostale||''],['Code postal',data.codePostal||''],['Ville / lieu',data.ville||''],
     ['Style',data.style||''],['Couleurs',data.couleurs||''],['Prestations',prestationLines.join('\n')],['Autre demande',data.autrePrestation||''],
     ['Fleurs premium / aimées',data.fleursAimees||''],['RDV téléphonique',data.souhaiteRdvTelephonique==='oui'?'Oui':'Non'],
     ['Date RDV',excelDateFR(data.rdvDateSouhaitee)],['Heure RDV',data.rdvHeureSouhaitee||''],['Inspirations',photos.length+' photo(s)']
@@ -657,6 +613,8 @@ async function envoyerNotificationNouvelleDemande(data){
       '<div style="font-family:Georgia,serif;color:#6f2638;font-size:20px;font-weight:700;margin-bottom:14px;">👰 Informations de la cliente</div>'+
       '<table role="presentation" style="width:100%;border-collapse:collapse;font-size:15px;line-height:1.5;">'+
         '<tr><td style="padding:7px 0;color:#806f75;width:42%;">Nom</td><td style="padding:7px 0;font-weight:700;">'+emailEsc(d.nomComplet)+'</td></tr>'+
+        '<tr><td style="padding:7px 0;color:#806f75;">Pseudo</td><td style="padding:7px 0;font-weight:700;">'+emailEsc(data.pseudoReseau||'Non renseigné')+'</td></tr>'+
+        '<tr><td style="padding:7px 0;color:#806f75;">Réseau social utilisé</td><td style="padding:7px 0;font-weight:700;">'+emailEsc(data.reseauSocial||'Non renseigné')+'</td></tr>'+
         '<tr><td style="padding:7px 0;color:#806f75;">E-mail</td><td style="padding:7px 0;"><a href="mailto:'+emailEsc(data.email||'')+'" style="color:#6f2638;">'+emailEsc(data.email||'Non renseigné')+'</a></td></tr>'+
         '<tr><td style="padding:7px 0;color:#806f75;">Téléphone</td><td style="padding:7px 0;">'+emailEsc(data.tel||'Non renseigné')+'</td></tr>'+
         '<tr><td style="padding:7px 0;color:#806f75;">Date du mariage</td><td style="padding:7px 0;font-weight:700;">'+formatDateEmail(data.dateMariage)+'</td></tr>'+
@@ -697,6 +655,8 @@ async function envoyerRecapitulatifCliente(data){
       '<h3 style="margin:0 0 14px;color:#6f2638;font-size:18px;">💍 Récapitulatif de votre projet</h3>'+
       '<table role="presentation" style="width:100%;border-collapse:collapse;font-size:15px;line-height:1.5;">'+
         '<tr><td style="padding:7px 0;color:#806f75;width:42%;">Nom</td><td style="padding:7px 0;font-weight:700;">'+emailEsc(d.nomComplet)+'</td></tr>'+
+        '<tr><td style="padding:7px 0;color:#806f75;">Pseudo</td><td style="padding:7px 0;font-weight:700;">'+emailEsc(data.pseudoReseau||'Non renseigné')+'</td></tr>'+
+        '<tr><td style="padding:7px 0;color:#806f75;">Réseau social utilisé</td><td style="padding:7px 0;font-weight:700;">'+emailEsc(data.reseauSocial||'Non renseigné')+'</td></tr>'+
         '<tr><td style="padding:7px 0;color:#806f75;">E-mail</td><td style="padding:7px 0;">'+emailEsc(data.email||'')+'</td></tr>'+
         '<tr><td style="padding:7px 0;color:#806f75;">Téléphone</td><td style="padding:7px 0;">'+emailEsc(data.tel||'Non renseigné')+'</td></tr>'+
         '<tr><td style="padding:7px 0;color:#806f75;">Date du mariage</td><td style="padding:7px 0;font-weight:700;">'+formatDateEmail(data.dateMariage)+'</td></tr>'+
@@ -734,7 +694,7 @@ function projectQuantityMap(p){
 }
 function computeProjectChanges(before,after){
   before=before||{};after=after||{};
-  var defs=[['prenom','Prénom'],['nom','Nom'],['tel','Téléphone'],['dateMariage','Date du mariage'],['adressePostale','Adresse postale'],['codePostal','Code postal'],['ville','Ville / lieu'],['style','Style'],['couleurs','Couleurs'],['autrePrestation','Autre demande'],['fleursAimees','Fleurs premium souhaitées'],['souhaiteRdvTelephonique','Rendez-vous téléphonique'],['rdvDateSouhaitee','Date du rendez-vous'],['rdvHeureSouhaitee','Heure du rendez-vous']];
+  var defs=[['prenom','Prénom'],['nom','Nom'],['pseudoReseau','Pseudo'],['reseauSocial','Réseau social utilisé'],['tel','Téléphone'],['dateMariage','Date du mariage'],['adressePostale','Adresse postale'],['codePostal','Code postal'],['ville','Ville / lieu'],['style','Style'],['couleurs','Couleurs'],['autrePrestation','Autre demande'],['fleursAimees','Fleurs premium souhaitées'],['souhaiteRdvTelephonique','Rendez-vous téléphonique'],['rdvDateSouhaitee','Date du rendez-vous'],['rdvHeureSouhaitee','Heure du rendez-vous']];
   var changes=[];
   defs.forEach(function(def){var a=before[def[0]],b=after[def[0]];if(Array.isArray(a)||Array.isArray(b)){a=(Array.isArray(a)?a:[]).slice().sort();b=(Array.isArray(b)?b:[]).slice().sort();}if(JSON.stringify(a==null?'':a)!==JSON.stringify(b==null?'':b))changes.push({field:def[0],label:def[1],type:'field',from:projectChangeValue(a),to:projectChangeValue(b)});});
   var oldQ=projectQuantityMap(before),newQ=projectQuantityMap(after),labels={};Object.keys(oldQ).concat(Object.keys(newQ)).forEach(function(x){labels[x]=true;});
@@ -768,6 +728,8 @@ async function envoyerNotificationModificationDemande(data,changes){
       '<div style="font-family:Georgia,serif;color:#6f2638;font-size:20px;font-weight:700;margin-bottom:14px;">✏️ Demande mise à jour</div>'+
       '<table role="presentation" style="width:100%;border-collapse:collapse;font-size:15px;line-height:1.5;">'+
         '<tr><td style="padding:7px 0;color:#806f75;width:42%;">Cliente</td><td style="padding:7px 0;font-weight:700;">'+emailEsc(d.nomComplet)+'</td></tr>'+
+        '<tr><td style="padding:7px 0;color:#806f75;">Pseudo</td><td style="padding:7px 0;font-weight:700;">'+emailEsc(data.pseudoReseau||'Non renseigné')+'</td></tr>'+
+        '<tr><td style="padding:7px 0;color:#806f75;">Réseau social utilisé</td><td style="padding:7px 0;font-weight:700;">'+emailEsc(data.reseauSocial||'Non renseigné')+'</td></tr>'+
         '<tr><td style="padding:7px 0;color:#806f75;">E-mail</td><td style="padding:7px 0;"><a href="mailto:'+emailEsc(data.email||'')+'" style="color:#6f2638;">'+emailEsc(data.email||'Non renseigné')+'</a></td></tr>'+
         '<tr><td style="padding:7px 0;color:#806f75;">Téléphone</td><td style="padding:7px 0;">'+emailEsc(data.tel||'Non renseigné')+'</td></tr>'+
         '<tr><td style="padding:7px 0;color:#806f75;">Date du mariage</td><td style="padding:7px 0;">'+formatDateEmail(data.dateMariage)+'</td></tr>'+
@@ -863,7 +825,7 @@ async function envoyerNotificationsValidationDevis(docData,nomComplet,dateValida
 var pendingProjectData=null;
 function buildProjectDataFromForm(form){
   var fd=new FormData(form),prestationQuantites=collectPrestationQuantities(),rubansPersonnalises=collectRibbonCustomizations(),fleursPremium=collectPremiumFlowers(),fleursPremiumQuantites=collectPremiumFlowerQuantities(),fleursPremiumAutre=String(fd.get('premiumFleursAutre')||'').trim(),fleursAimees=premiumFlowersText(fleursPremium,fleursPremiumAutre,fleursPremiumQuantites);
-  return {ownerUid:current.uid,email:current.email,prenom:fd.get('prenom'),nom:fd.get('nom'),tel:fd.get('tel'),dateMariage:fd.get('dateMariage'),adressePostale:String(fd.get('adressePostale')||'').trim(),codePostal:String(fd.get('codePostal')||'').trim(),ville:fd.get('ville'),style:fd.get('style'),couleurs:fd.get('couleurs'),prestations:prestationLabelsFromQuantities(prestationQuantites),prestationQuantites:prestationQuantites,rubansPersonnalises:rubansPersonnalises,formulaireBesoinsVersion:8,autrePrestation:String(fd.get('autrePrestation')||'').trim(),fleursPremium:fleursPremium,fleursPremiumQuantites:fleursPremiumQuantites,fleursPremiumAutre:fleursPremiumAutre,fleursAimees:fleursAimees,souhaiteRdvTelephonique:fd.get('souhaiteRdvTelephonique'),rdvDateSouhaitee:fd.get('souhaiteRdvTelephonique')==='oui'?fd.get('rdvDateSouhaitee'):'',rdvHeureSouhaitee:fd.get('souhaiteRdvTelephonique')==='oui'?fd.get('rdvHeureSouhaitee'):'',photos:project.photos||[],clientStatus:'submitted',updatedAt:firebase.firestore.FieldValue.serverTimestamp(),createdAt:project.createdAt||firebase.firestore.FieldValue.serverTimestamp()};
+  return {ownerUid:current.uid,email:current.email,prenom:fd.get('prenom'),nom:fd.get('nom'),pseudoReseau:String(fd.get('pseudoReseau')||'').trim(),reseauSocial:String(fd.get('reseauSocial')||'').trim(),tel:fd.get('tel'),dateMariage:fd.get('dateMariage'),adressePostale:String(fd.get('adressePostale')||'').trim(),codePostal:String(fd.get('codePostal')||'').trim(),ville:fd.get('ville'),style:fd.get('style'),couleurs:fd.get('couleurs'),prestations:prestationLabelsFromQuantities(prestationQuantites),prestationQuantites:prestationQuantites,rubansPersonnalises:rubansPersonnalises,formulaireBesoinsVersion:8,autrePrestation:String(fd.get('autrePrestation')||'').trim(),fleursPremium:fleursPremium,fleursPremiumQuantites:fleursPremiumQuantites,fleursPremiumAutre:fleursPremiumAutre,fleursAimees:fleursAimees,souhaiteRdvTelephonique:fd.get('souhaiteRdvTelephonique'),rdvDateSouhaitee:fd.get('souhaiteRdvTelephonique')==='oui'?fd.get('rdvDateSouhaitee'):'',rdvHeureSouhaitee:fd.get('souhaiteRdvTelephonique')==='oui'?fd.get('rdvHeureSouhaitee'):'',photos:project.photos||[],clientStatus:'submitted',updatedAt:firebase.firestore.FieldValue.serverTimestamp(),createdAt:project.createdAt||firebase.firestore.FieldValue.serverTimestamp()};
 }
 function reviewCategoryForLabel(label){
   for(var i=0;i<NEEDS_CATEGORIES.length;i++)if(NEEDS_CATEGORIES[i].items.indexOf(label)>=0)return NEEDS_CATEGORIES[i].title;
@@ -873,7 +835,8 @@ function renderRequestReview(data){
   var quantities=data.prestationQuantites||{},ribbons=data.rubansPersonnalises||{},grouped={};
   (data.prestations||[]).forEach(function(label){var title=reviewCategoryForLabel(label);if(!grouped[title])grouped[title]=[];grouped[title].push({label:label,qty:Number(quantities[label])||1,text:ribbons[label]||''});});
   var details='<section class="request-review-section"><h3>💍 Mon projet</h3><div class="request-review-details">'+
-    '<div><strong>Nom :</strong> '+esc([data.prenom,data.nom].filter(Boolean).join(' '))+'</div><div><strong>Téléphone :</strong> '+esc(data.tel)+'</div>'+
+    '<div><strong>Nom :</strong> '+esc([data.prenom,data.nom].filter(Boolean).join(' '))+'</div><div><strong>Pseudo :</strong> '+esc(data.pseudoReseau||'Non renseigné')+'</div>'+
+    '<div><strong>Réseau social :</strong> '+esc(data.reseauSocial||'Non renseigné')+'</div><div><strong>Téléphone :</strong> '+esc(data.tel)+'</div>'+
     '<div><strong>Date du mariage :</strong> '+esc(data.dateMariage?dateFR(data.dateMariage):'Non renseignée')+'</div><div><strong>Adresse postale :</strong> '+esc(data.adressePostale||'Non renseignée')+'</div>'+
     '<div><strong>Code postal :</strong> '+esc(data.codePostal||'Non renseigné')+'</div><div><strong>Ville :</strong> '+esc(data.ville||'Non renseignée')+'</div>'+
     '<div><strong>Style :</strong> '+esc(data.style||'Non renseigné')+'</div><div><strong>Couleurs :</strong> '+esc(data.couleurs||'Non renseignées')+'</div></div></section>';

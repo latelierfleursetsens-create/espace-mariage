@@ -1,0 +1,13 @@
+MISE À JOUR DU 08/09/2026 — PSEUDO ET RÉSEAU SOCIAL
+
+Ajouts dans la fiche de demande de mariage :
+- Champ obligatoire « Pseudo utilisé pour nos échanges ».
+- Champ obligatoire « Réseau social utilisé pour nos échanges » avec choix : Instagram, Facebook / Messenger, TikTok, WhatsApp, Autre.
+- Enregistrement de ces deux informations dans le dossier Firestore.
+- Affichage dans l’écran de vérification avant envoi.
+- Affichage dans l’e-mail de nouvelle demande mariage reçu par L’Atelier Fleurs & Sens.
+- Affichage dans le récapitulatif e-mail envoyé à la cliente.
+- Suivi de ces champs dans les notifications de modification du dossier.
+- Ajout dans l’onglet « Fiche demande » de la pièce jointe Excel.
+
+IMPORTANT : la structure de l’onglet « IMPORT » Excel reste inchangée pour conserver la compatibilité avec le fichier Gestion Mariages.
