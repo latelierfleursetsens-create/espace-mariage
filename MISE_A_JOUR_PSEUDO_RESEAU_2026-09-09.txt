@@ -1,0 +1,11 @@
+MISE À JOUR 09/09/2026 — PSEUDO / RÉSEAU SOCIAL
+
+- Les e-mails atelier et cliente affichent déjà le pseudo et le réseau social utilisé.
+- Le fichier Excel joint à la nouvelle demande contient désormais aussi :
+  R = Pseudo réseau
+  S = Réseau social utilisé
+- Les colonnes A:Q restent inchangées pour conserver la compatibilité avec les macros Gestion Mariages.
+- Pour permettre la remontée sans modifier le VBA existant, le contact réseau est aussi ajouté en fin du champ « Autre demande » sous la forme :
+  Pseudo réseau : ...
+  Réseau social : ...
+- Le classeur Gestion Mariages associé affiche ces données dans deux colonnes dédiées à droite de l'onglet Mariages.
