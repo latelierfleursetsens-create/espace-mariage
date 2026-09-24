@@ -31,6 +31,7 @@
 .ribbon-customization label{font-size:14px;color:var(--b)}
 .ribbon-customization input{margin-top:7px;background:#fff}
 .ribbon-example{display:block;margin-top:6px;color:#796c70;font-size:12px;font-weight:400;line-height:1.45}
+.peigne-customization{grid-column:1/-1;margin-top:4px;padding:12px;border-radius:11px;background:#fffaf8;border:1px dashed #d7bfc5}.peigne-customization.hidden{display:none!important}.peigne-customization label{font-size:14px;color:var(--b)}.peigne-customization select{margin-top:7px;background:#fff}.peigne-help{display:block;margin-top:7px;color:#796c70;font-size:12px;font-weight:400;line-height:1.45}
 
 .premium-flower-section{margin:16px 0;padding:16px;border:1px solid #eadfd8;border-radius:16px;background:#fffaf8}
 .premium-flower-section h3{margin:0 0 8px;color:var(--b);font-family:Georgia,serif;font-size:21px}
@@ -151,6 +152,55 @@ function ribbonCustomizationHtml(label){
     '</label>'+
   '</div>';
 }
+var PEIGNE_CUSTOMIZATIONS={
+  'Mini peigne 4 dents':{min:4,max:12},
+  'Double peigne 2 × 4 dents':{min:4,max:12},
+  'Mini peigne 4 dents — enfant':{min:4,max:12},
+  'Mini peigne 4 dents — témoin':{min:4,max:12},
+  'Double peigne 2 × 4 dents — témoin':{min:4,max:12},
+  'Peigne 10 dents':{min:8,max:14},
+  'Peigne 10 dents — enfant':{min:8,max:14},
+  'Peigne 10 dents — témoin':{min:8,max:14}
+};
+function peigneCustomizationHtml(label){
+  var config=PEIGNE_CUSTOMIZATIONS[label];
+  if(!config)return '';
+  var options='<option value="">Choisir la longueur</option>';
+  for(var cm=config.min;cm<=config.max;cm++)options+='<option value="'+cm+'">'+cm+' cm</option>';
+  return '<div class="peigne-customization hidden" data-peigne-box="'+esc(label)+'">'+
+    '<label>Longueur du peigne *<select data-peigne-length="'+esc(label)+'" aria-label="Longueur pour '+esc(label)+'">'+options+'</select>'+
+    '<span class="peigne-help">Merci de choisir la longueur du peigne. Si possible, validez cette mesure avec votre coiffeuse.</span></label>'+
+  '</div>';
+}
+function collectPeigneLengths(){
+  var values={};
+  document.querySelectorAll('[data-peigne-length]').forEach(function(select){
+    var label=select.getAttribute('data-peigne-length');
+    var qtyInput=Array.from(document.querySelectorAll('[data-qty-item]')).find(function(el){return el.getAttribute('data-qty-item')===label;});
+    var value=String(select.value||'').trim();
+    if(qtyInput&&clampQuantity(qtyInput.value)>0&&value)values[label]=Number(value);
+  });
+  return values;
+}
+function validatePeigneLengths(){
+  var firstInvalid=null;
+  document.querySelectorAll('[data-peigne-length]').forEach(function(select){
+    var label=select.getAttribute('data-peigne-length');
+    var qtyInput=Array.from(document.querySelectorAll('[data-qty-item]')).find(function(el){return el.getAttribute('data-qty-item')===label;});
+    var selected=!!(qtyInput&&clampQuantity(qtyInput.value)>0);
+    select.required=selected;
+    select.setCustomValidity('');
+    if(selected&&!select.value&&!firstInvalid)firstInvalid=select;
+  });
+  if(firstInvalid){
+    firstInvalid.setCustomValidity('Merci de choisir la longueur du peigne. Si possible, validez cette mesure avec votre coiffeuse.');
+    firstInvalid.reportValidity();
+    firstInvalid.setCustomValidity('');
+    return false;
+  }
+  return true;
+}
+
 function updatePremiumOtherVisibility(){
   var other=document.querySelector('[name="premiumFleurs"][value="Autre"]');
   var box=$('premiumOtherBox');
@@ -245,6 +295,7 @@ function renderCategorizedChoices(){
           '<button type="button" class="qty-btn" data-qty-plus="'+esc(x)+'" aria-label="Augmenter la quantité de '+esc(x)+'">+</button>'+
         '</div>'+
         ribbonCustomizationHtml(x)+
+        peigneCustomizationHtml(x)+
       '</div>';
     }).join('');
     var section='<section class="needs-category'+(category.legacy?' legacy-needs-category hidden':'')+'"'+(category.legacy?' data-legacy-needs="true"':'')+'><h3>'+esc(category.title)+'</h3>'+(items?'<div class="checks">'+items+'</div>':'<p class="needs-empty">Aucune création disponible dans cette catégorie.</p>')+(category.notice?'<div class="pickup-notice"><span class="pickup-icon">ℹ️</span><strong>Retrait à l’atelier :</strong> '+esc(category.notice)+'</div>':'')+'</section>';
@@ -266,6 +317,10 @@ function updateQuantityRow(input){
   if(row)row.classList.toggle('is-selected',value>0);
   var ribbonBox=row&&row.querySelector('[data-ribbon-box]');
   if(ribbonBox)ribbonBox.classList.toggle('hidden',value<=0);
+  var peigneBox=row&&row.querySelector('[data-peigne-box]');
+  if(peigneBox)peigneBox.classList.toggle('hidden',value<=0);
+  var peigneSelect=row&&row.querySelector('[data-peigne-length]');
+  if(peigneSelect){peigneSelect.required=value>0;if(value<=0)peigneSelect.setCustomValidity('');}
   var minus=row&&row.querySelector('[data-qty-minus]');
   if(minus)minus.disabled=value<=0;
 }
@@ -344,6 +399,12 @@ async function loadProject(){
   Array.from(f.querySelectorAll('[data-ribbon-text]')).forEach(function(input){
     var label=input.getAttribute('data-ribbon-text');
     input.value=storedRibbonTexts[label]||'';
+  });
+  var storedPeigneLengths=project.peigneLongueurs||{};
+  Array.from(f.querySelectorAll('[data-peigne-length]')).forEach(function(select){
+    var label=select.getAttribute('data-peigne-length');
+    var value=storedPeigneLengths[label];
+    select.value=(value==null?'':String(value));
   });
   var structuredFlowers=Array.isArray(project.fleursPremium)?project.fleursPremium:(Array.isArray(project.premiumFleurs)?project.premiumFleurs:[]);
   var structuredOther=String(project.fleursPremiumAutre||project.premiumFleursAutre||'');
@@ -450,7 +511,7 @@ function projectComparable(data){
   return {
     prenom:data.prenom||'',nom:data.nom||'',pseudoReseau:data.pseudoReseau||'',reseauSocial:data.reseauSocial||'',tel:data.tel||'',dateMariage:data.dateMariage||'',adressePostale:data.adressePostale||'',codePostal:data.codePostal||'',ville:data.ville||'',
     style:data.style||'',couleurs:data.couleurs||'',
-    prestations:(data.prestations||[]).slice().sort(),prestationQuantites:Object.keys(data.prestationQuantites||{}).sort().reduce(function(acc,key){acc[key]=Number(data.prestationQuantites[key])||0;return acc;},{}),rubansPersonnalises:Object.keys(data.rubansPersonnalises||{}).sort().reduce(function(acc,key){acc[key]=String(data.rubansPersonnalises[key]||'');return acc;},{}),autrePrestation:data.autrePrestation||'',
+    prestations:(data.prestations||[]).slice().sort(),prestationQuantites:Object.keys(data.prestationQuantites||{}).sort().reduce(function(acc,key){acc[key]=Number(data.prestationQuantites[key])||0;return acc;},{}),rubansPersonnalises:Object.keys(data.rubansPersonnalises||{}).sort().reduce(function(acc,key){acc[key]=String(data.rubansPersonnalises[key]||'');return acc;},{}),peigneLongueurs:Object.keys(data.peigneLongueurs||{}).sort().reduce(function(acc,key){acc[key]=Number(data.peigneLongueurs[key])||0;return acc;},{}),autrePrestation:data.autrePrestation||'',
     fleursAimees:data.fleursAimees||'',fleursPremium:(data.fleursPremium||[]).slice().sort(),fleursPremiumAutre:data.fleursPremiumAutre||'',fleursPremiumQuantites:Object.keys(data.fleursPremiumQuantites||{}).sort().reduce(function(acc,key){var n=Math.max(0,Number(data.fleursPremiumQuantites[key])||0);if(n>0)acc[key]=n;return acc;},{}),
     souhaiteRdvTelephonique:data.souhaiteRdvTelephonique||'',rdvDateSouhaitee:data.rdvDateSouhaitee||'',rdvHeureSouhaitee:data.rdvHeureSouhaitee||'',
     photos:(data.photos||[]).map(function(p){return {name:p.name||'',path:p.path||'',url:p.url||''}}).sort(function(a,b){return (a.path||a.url).localeCompare(b.path||b.url)})
@@ -460,10 +521,12 @@ function projectSignature(data){return JSON.stringify(projectComparable(data||{}
 function notificationDetails(data){
   var quantities=data.prestationQuantites||{};
   var ribbonTexts=data.rubansPersonnalises||{};
+  var peigneLengths=data.peigneLongueurs||{};
   var prestations=(data.prestations||[]).map(function(label){
     var qty=Number(quantities[label])||1;
     var text=ribbonTexts[label]?(' — Texte : « '+ribbonTexts[label]+' »'):'';
-    return (qty>1?label+' ×'+qty:label)+text;
+    var peigne=peigneLengths[label]?(' — Longueur : '+peigneLengths[label]+' cm'):'';
+    return (qty>1?label+' ×'+qty:label)+text+peigne;
   });
   if(data.autrePrestation) prestations.push(data.autrePrestation);
   var nomComplet=[data.prenom,data.nom].filter(Boolean).join(' ').trim()||'Cliente';
@@ -523,8 +586,8 @@ function excelSafeText(value){return String(value==null?'':value);}
 function excelSafeName(value){return excelSafeText(value).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[<>:"\/\\|?*]+/g,'_').replace(/\s+/g,' ').trim().slice(0,80)||'demande';}
 function excelDateFR(value){if(!value)return '';var p=String(value).slice(0,10).split('-');return p.length===3?p[2]+'/'+p[1]+'/'+p[0]:String(value);}
 function excelPrestationLines(data){
-  var q=data.prestationQuantites||{},r=data.rubansPersonnalises||{};
-  return (data.prestations||[]).map(function(label){var qty=Math.max(1,Number(q[label])||1);return qty+' x '+label+(r[label]?' — Texte : '+r[label]:'');});
+  var q=data.prestationQuantites||{},r=data.rubansPersonnalises||{},p=data.peigneLongueurs||{};
+  return (data.prestations||[]).map(function(label){var qty=Math.max(1,Number(q[label])||1);return qty+' x '+label+(r[label]?' — Texte : '+r[label]:'')+(p[label]?' — Longueur : '+p[label]+' cm':'');});
 }
 function buildDemandeExcelAttachment(data){
   if(typeof XLSX==='undefined')throw new Error('Module Excel indisponible. Rechargez la page puis réessayez.');
@@ -674,6 +737,8 @@ function computeProjectChanges(before,after){
   });
   var oldR=(before.rubansPersonnalises&&typeof before.rubansPersonnalises==='object')?before.rubansPersonnalises:{},newR=(after.rubansPersonnalises&&typeof after.rubansPersonnalises==='object')?after.rubansPersonnalises:{},rkeys={};Object.keys(oldR).concat(Object.keys(newR)).forEach(function(x){rkeys[x]=true;});
   Object.keys(rkeys).sort().forEach(function(label){var a=String(oldR[label]||''),b=String(newR[label]||'');if(a!==b)changes.push({field:'rubansPersonnalises',label:'Texte personnalisé modifié',type:'field',itemLabel:label,from:a||'Aucun texte',to:b||'Texte supprimé'});});
+  var oldP=(before.peigneLongueurs&&typeof before.peigneLongueurs==='object')?before.peigneLongueurs:{},newP=(after.peigneLongueurs&&typeof after.peigneLongueurs==='object')?after.peigneLongueurs:{},pkeys={};Object.keys(oldP).concat(Object.keys(newP)).forEach(function(x){pkeys[x]=true;});
+  Object.keys(pkeys).sort().forEach(function(label){var a=Number(oldP[label])||0,b=Number(newP[label])||0;if(a!==b)changes.push({field:'peigneLongueurs',label:'Longueur de peigne modifiée',type:'field',itemLabel:label,from:a?(a+' cm'):'Non renseignée',to:b?(b+' cm'):'Supprimée'});});
   var pa=projectPhotoKeys(before.photos),pb=projectPhotoKeys(after.photos);if(JSON.stringify(pa)!==JSON.stringify(pb))changes.push({field:'photos',label:'Photos d’inspiration',type:'field',from:pa.length+' photo(s)',to:pb.length+' photo(s)'});
   return changes;
 }
@@ -792,16 +857,16 @@ async function envoyerNotificationsValidationDevis(docData,nomComplet,dateValida
 }
 var pendingProjectData=null;
 function buildProjectDataFromForm(form){
-  var fd=new FormData(form),prestationQuantites=collectPrestationQuantities(),rubansPersonnalises=collectRibbonCustomizations(),fleursPremium=collectPremiumFlowers(),fleursPremiumQuantites=collectPremiumFlowerQuantities(),fleursPremiumAutre=String(fd.get('premiumFleursAutre')||'').trim(),fleursAimees=premiumFlowersText(fleursPremium,fleursPremiumAutre,fleursPremiumQuantites);
-  return {ownerUid:current.uid,email:current.email,prenom:fd.get('prenom'),nom:fd.get('nom'),pseudoReseau:String(fd.get('pseudoReseau')||'').trim(),reseauSocial:String(fd.get('reseauSocial')||'').trim(),tel:fd.get('tel'),dateMariage:fd.get('dateMariage'),adressePostale:String(fd.get('adressePostale')||'').trim(),codePostal:String(fd.get('codePostal')||'').trim(),ville:fd.get('ville'),style:fd.get('style'),couleurs:fd.get('couleurs'),prestations:prestationLabelsFromQuantities(prestationQuantites),prestationQuantites:prestationQuantites,rubansPersonnalises:rubansPersonnalises,formulaireBesoinsVersion:8,autrePrestation:String(fd.get('autrePrestation')||'').trim(),fleursPremium:fleursPremium,fleursPremiumQuantites:fleursPremiumQuantites,fleursPremiumAutre:fleursPremiumAutre,fleursAimees:fleursAimees,souhaiteRdvTelephonique:fd.get('souhaiteRdvTelephonique'),rdvDateSouhaitee:fd.get('souhaiteRdvTelephonique')==='oui'?fd.get('rdvDateSouhaitee'):'',rdvHeureSouhaitee:fd.get('souhaiteRdvTelephonique')==='oui'?fd.get('rdvHeureSouhaitee'):'',photos:project.photos||[],clientStatus:'submitted',updatedAt:firebase.firestore.FieldValue.serverTimestamp(),createdAt:project.createdAt||firebase.firestore.FieldValue.serverTimestamp()};
+  var fd=new FormData(form),prestationQuantites=collectPrestationQuantities(),rubansPersonnalises=collectRibbonCustomizations(),peigneLongueurs=collectPeigneLengths(),fleursPremium=collectPremiumFlowers(),fleursPremiumQuantites=collectPremiumFlowerQuantities(),fleursPremiumAutre=String(fd.get('premiumFleursAutre')||'').trim(),fleursAimees=premiumFlowersText(fleursPremium,fleursPremiumAutre,fleursPremiumQuantites);
+  return {ownerUid:current.uid,email:current.email,prenom:fd.get('prenom'),nom:fd.get('nom'),pseudoReseau:String(fd.get('pseudoReseau')||'').trim(),reseauSocial:String(fd.get('reseauSocial')||'').trim(),tel:fd.get('tel'),dateMariage:fd.get('dateMariage'),adressePostale:String(fd.get('adressePostale')||'').trim(),codePostal:String(fd.get('codePostal')||'').trim(),ville:fd.get('ville'),style:fd.get('style'),couleurs:fd.get('couleurs'),prestations:prestationLabelsFromQuantities(prestationQuantites),prestationQuantites:prestationQuantites,rubansPersonnalises:rubansPersonnalises,peigneLongueurs:peigneLongueurs,formulaireBesoinsVersion:9,autrePrestation:String(fd.get('autrePrestation')||'').trim(),fleursPremium:fleursPremium,fleursPremiumQuantites:fleursPremiumQuantites,fleursPremiumAutre:fleursPremiumAutre,fleursAimees:fleursAimees,souhaiteRdvTelephonique:fd.get('souhaiteRdvTelephonique'),rdvDateSouhaitee:fd.get('souhaiteRdvTelephonique')==='oui'?fd.get('rdvDateSouhaitee'):'',rdvHeureSouhaitee:fd.get('souhaiteRdvTelephonique')==='oui'?fd.get('rdvHeureSouhaitee'):'',photos:project.photos||[],clientStatus:'submitted',updatedAt:firebase.firestore.FieldValue.serverTimestamp(),createdAt:project.createdAt||firebase.firestore.FieldValue.serverTimestamp()};
 }
 function reviewCategoryForLabel(label){
   for(var i=0;i<NEEDS_CATEGORIES.length;i++)if(NEEDS_CATEGORIES[i].items.indexOf(label)>=0)return NEEDS_CATEGORIES[i].title;
   return '🌸 Autres créations';
 }
 function renderRequestReview(data){
-  var quantities=data.prestationQuantites||{},ribbons=data.rubansPersonnalises||{},grouped={};
-  (data.prestations||[]).forEach(function(label){var title=reviewCategoryForLabel(label);if(!grouped[title])grouped[title]=[];grouped[title].push({label:label,qty:Number(quantities[label])||1,text:ribbons[label]||''});});
+  var quantities=data.prestationQuantites||{},ribbons=data.rubansPersonnalises||{},peigneLengths=data.peigneLongueurs||{},grouped={};
+  (data.prestations||[]).forEach(function(label){var title=reviewCategoryForLabel(label);if(!grouped[title])grouped[title]=[];grouped[title].push({label:label,qty:Number(quantities[label])||1,text:ribbons[label]||'',peigneLength:peigneLengths[label]||''});});
   var details='<section class="request-review-section"><h3>💍 Mon projet</h3><div class="request-review-details">'+
     '<div><strong>Nom :</strong> '+esc([data.prenom,data.nom].filter(Boolean).join(' '))+'</div><div><strong>Pseudo :</strong> '+esc(data.pseudoReseau||'Non renseigné')+'</div>'+
     '<div><strong>Réseau social :</strong> '+esc(data.reseauSocial||'Non renseigné')+'</div><div><strong>Téléphone :</strong> '+esc(data.tel)+'</div>'+
@@ -809,7 +874,7 @@ function renderRequestReview(data){
     '<div><strong>Code postal :</strong> '+esc(data.codePostal||'Non renseigné')+'</div><div><strong>Ville :</strong> '+esc(data.ville||'Non renseignée')+'</div>'+
     '<div><strong>Style :</strong> '+esc(data.style||'Non renseigné')+'</div><div><strong>Couleurs :</strong> '+esc(data.couleurs||'Non renseignées')+'</div></div></section>';
   var needs='';
-  NEEDS_CATEGORIES.concat([{title:'🌸 Autres créations'}]).forEach(function(category){var items=grouped[category.title]||[];if(!items.length)return;needs+='<section class="request-review-section"><h3>'+esc(category.title)+'</h3><ul class="request-review-list">'+items.map(function(item){return '<li>'+esc(item.label)+' <strong>×'+item.qty+'</strong>'+(item.text?' — Texte : « '+esc(item.text)+' »':'')+'</li>';}).join('')+'</ul></section>';});
+  NEEDS_CATEGORIES.concat([{title:'🌸 Autres créations'}]).forEach(function(category){var items=grouped[category.title]||[];if(!items.length)return;needs+='<section class="request-review-section"><h3>'+esc(category.title)+'</h3><ul class="request-review-list">'+items.map(function(item){return '<li>'+esc(item.label)+' <strong>×'+item.qty+'</strong>'+(item.text?' — Texte : « '+esc(item.text)+' »':'')+(item.peigneLength?' — <strong>Longueur : '+esc(item.peigneLength)+' cm</strong>':'')+'</li>';}).join('')+'</ul></section>';});
   if(!needs)needs='<section class="request-review-section"><h3>🌸 Mes besoins</h3><p class="request-review-empty">Aucune création n’a été sélectionnée.</p></section>';
   var premiumText=data.fleursAimees||premiumFlowersText(data.fleursPremium||[],data.fleursPremiumAutre||'',data.fleursPremiumQuantites||{});
   var complements='<section class="request-review-section"><h3>📝 Informations complémentaires</h3>'+
@@ -859,7 +924,7 @@ async function persistProjectData(data){
   }catch(err){console.error(err);$('requestReviewMsg').textContent='La fiche n’a pas pu être enregistrée : '+err.message+(rdvCurrent?' Votre rendez-vous dans l’agenda est conservé. Réessayez pour terminer l’envoi de la fiche.':'');}
   finally{$('confirmRequestReview').disabled=false;$('editRequestReview').disabled=false;}
 }
-$('projectForm').onsubmit=function(e){e.preventDefault();var form=e.target;if(!form.reportValidity())return;var rdvDateAvantEnvoi=$('rdvDateSouhaitee')&&$('rdvDateSouhaitee').value;if(document.querySelector('[name=souhaiteRdvTelephonique][value="oui"]:checked')&&rdvDateIndisponible(rdvDateAvantEnvoi)){updateRdvHours(rdvDateAvantEnvoi,'');$('rdvDateSouhaitee').reportValidity();return}if(photoUploadInProgress){$('saveMsg').textContent='Veuillez attendre la fin de l’envoi des photos avant de vérifier la fiche.';return}pendingProjectData=buildProjectDataFromForm(form);renderRequestReview(pendingProjectData);$('requestReviewMsg').textContent='';$('requestReviewModal').classList.remove('hidden');};
+$('projectForm').onsubmit=function(e){e.preventDefault();var form=e.target;if(!validatePeigneLengths())return;if(!form.reportValidity())return;var rdvDateAvantEnvoi=$('rdvDateSouhaitee')&&$('rdvDateSouhaitee').value;if(document.querySelector('[name=souhaiteRdvTelephonique][value="oui"]:checked')&&rdvDateIndisponible(rdvDateAvantEnvoi)){updateRdvHours(rdvDateAvantEnvoi,'');$('rdvDateSouhaitee').reportValidity();return}if(photoUploadInProgress){$('saveMsg').textContent='Veuillez attendre la fin de l’envoi des photos avant de vérifier la fiche.';return}pendingProjectData=buildProjectDataFromForm(form);renderRequestReview(pendingProjectData);$('requestReviewMsg').textContent='';$('requestReviewModal').classList.remove('hidden');};
 $('editRequestReview').onclick=function(){$('requestReviewModal').classList.add('hidden');pendingProjectData=null;$('projectForm').scrollIntoView({behavior:'smooth',block:'start'});};
 $('confirmRequestReview').onclick=function(){if(pendingProjectData)persistProjectData(pendingProjectData);};
 $('requestReviewModal').onclick=function(e){if(e.target===$('requestReviewModal')&&!$('confirmRequestReview').disabled){$('requestReviewModal').classList.add('hidden');pendingProjectData=null;}};
