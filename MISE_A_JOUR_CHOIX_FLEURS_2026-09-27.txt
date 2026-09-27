@@ -1,0 +1,28 @@
+CHOIX DES FLEURS POUR LE BOUQUET DE MARIÉE — 27/09/2026
+
+Dès qu’une cliente ajoute une quantité pour un bouquet de mariée, un encadré
+apparaît directement sous ce bouquet. Une réponse est obligatoire :
+- Avec des fleurs premium : préciser les fleurs et leurs quantités.
+- Sans fleurs premium : confirmer ce souhait.
+- Besoin des conseils d’Élodie : transmettre explicitement cette demande.
+
+Les roses, pivoines et autres fleurs premium sont présentées comme des
+suppléments au prix de base. Roses et pivoines stabilisées de 6 cm : +6 € par
+fleur, conformément au tarif déjà présent dans l’espace. Autres fleurs : devis.
+Les quantités sont indiquées PAR BOUQUET. Pour plusieurs bouquets de la même
+taille, elles s’appliquent à chacun ; le total est repris dans les données.
+
+Le choix, les fleurs et les quantités sont repris dans le récapitulatif,
+les e-mails et la colonne existante « Fleurs premium / aimées » de l’export Excel.
+
+Les anciens choix détaillés sont repris automatiquement lorsqu’un seul bouquet
+avait été sélectionné. Pour plusieurs bouquets ou un ancien souhait saisi
+uniquement en texte libre, les anciens choix restent affichés comme repère
+et la composition doit être précisée par la cliente.
+Le choix obligatoire de la longueur des peignes reste en place.
+
+MISE EN PLACE
+Remplacer le contenu du site par le contenu du dossier espace-mariage-main
+contenu dans ce ZIP. Inclure le dossier css et le nouveau fichier
+js/bouquet-premium.js, en plus du fichier index.html modifié.
+Ce ZIP prépare la modification ; il ne la publie pas automatiquement.

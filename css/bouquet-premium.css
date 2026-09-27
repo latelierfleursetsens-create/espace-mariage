@@ -1,0 +1,33 @@
+.bouquet-choice{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-column:1/-1;gap:12px}
+.bouquet-customization{grid-column:1/-1;min-width:0;margin:6px 0 0;border:1px solid #dac6cc;border-radius:12px;padding:15px;background:#fff}
+.bouquet-customization legend{color:var(--b);font-size:17px;font-weight:700;padding:0 6px;max-width:100%}
+.bouquet-customization p{font-size:14px;line-height:1.55;margin:0 0 12px}
+.bouquet-explanation strong{display:block;margin-bottom:4px;color:var(--b)}
+.bouquet-price{padding:10px 12px;border-radius:9px;background:#f7eeea;color:#633342}
+.bouquet-answers{display:grid;gap:8px}
+.bouquet-answer{display:flex;align-items:flex-start;gap:10px;border:1px solid #e0d5d0;border-radius:10px;padding:12px;cursor:pointer;background:#fff}
+.bouquet-answer:has(input:checked){border-color:var(--b);background:#fcf4f5;box-shadow:inset 3px 0 var(--b)}
+.bouquet-answer input{width:19px;height:19px;flex:none;margin:1px 0 0;accent-color:var(--b)}
+.bouquet-answer strong{font-size:14px;line-height:1.4}
+.bouquet-answer small,.bouquet-flower small{display:block;font-size:12px;font-weight:400;color:#796c70;line-height:1.45;margin-top:3px}
+.bouquet-flower-details{margin-top:18px;border-top:1px solid #eadfd8;padding-top:14px}
+.bouquet-flower-details h4{margin:0 0 6px;font-size:16px;color:var(--b)}
+.bouquet-flower-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.bouquet-flower{display:flex;align-items:center;justify-content:space-between;gap:10px;border:1px solid #eadfd8;border-radius:10px;padding:10px}
+.bouquet-flower.is-selected{background:#fff6f3;border-color:#ba94a0}
+.bouquet-flower label{font-size:14px;line-height:1.4;min-width:0}
+.bouquet-flower-qty{display:flex;align-items:center;gap:4px;flex:none}
+.bouquet-flower-qty input{width:44px;height:36px;text-align:center;padding:3px;margin:0;border-radius:8px;font-weight:700;appearance:textfield;-moz-appearance:textfield}
+.bouquet-flower-qty input::-webkit-inner-spin-button,.bouquet-flower-qty input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+.bouquet-flower-qty .qty-btn{width:36px;height:36px;border-radius:8px}
+.bouquet-other{font-size:14px;margin-top:12px}
+.bouquet-customization .bouquet-supplement{margin:12px 0 0;padding:10px 12px;background:#eef3ed;border-radius:9px;color:#3e5e40;font-weight:600}
+.bouquet-customization .bouquet-advice{margin:12px 0 0;padding:12px;background:#f8f3ec;border-radius:9px}
+.bouquet-customization .bouquet-status{margin:12px 0 0;font-size:13px;color:#44644a}
+.bouquet-incomplete .bouquet-status{color:#7d402b;font-weight:600}
+.bouquet-choice:focus-within{outline:2px solid #dcc2cb;outline-offset:2px}
+.bouquet-legacy-reference{grid-column:1/-1;background:#fff6df;border:1px solid #e7c89f;border-radius:12px;padding:14px;font-size:14px;line-height:1.5}
+.bouquet-legacy-reference p{margin:8px 0 0;white-space:pre-line}
+.bouquet-instructions{font-size:14px;line-height:1.5;margin:0 0 12px;color:#796c70}
+@media(max-width:700px){.bouquet-flower-grid{grid-template-columns:1fr}.bouquet-customization{padding:11px}.bouquet-flower{padding:10px 8px}.bouquet-flower-qty .qty-btn{width:40px;height:40px}.bouquet-flower-qty input{height:40px}}
+@media(max-width:370px){.bouquet-choice{grid-template-columns:1fr}.bouquet-choice>.qty-control{justify-self:start}.bouquet-flower{flex-wrap:wrap}}
