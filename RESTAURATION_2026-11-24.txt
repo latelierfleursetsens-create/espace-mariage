@@ -1,0 +1,49 @@
+ESPACE MARIAGE — RESTAURATION DU 24 NOVEMBRE 2026
+
+Cette version rassemble les fonctions retrouvées dans la sauvegarde
+espace-mariage-main_PHOTOS_TIIME.zip et les évolutions conservées dans la
+version avec liberté de création et tarifs 2028.
+
+FONCTIONS RÉTABLIES
+- Fichier Client_Tiime_*.csv joint au mail de nouvelle demande pour importer
+  les coordonnées de la cliente dans Tiime.
+- Ville et pays de l'adresse postale, distincts du lieu du mariage.
+- Photos d'inspiration jointes au mail administratrice, avec liens vers les
+  originaux et indication lorsqu'une photo ne peut pas être jointe.
+- Choix des fleurs par taille de bouquet, avec réponse obligatoire : avec
+  fleurs premium, sans fleurs premium ou conseils d'Élodie.
+- Enregistrement des choix supprimés sans conserver leurs anciennes valeurs.
+- Confirmation affichée après la préparation des notifications.
+
+ÉVOLUTIONS CONSERVÉES
+- Photo des tarifs mariage 2028 fournie le 24 novembre.
+- Supplément de 7 euros par rose ou pivoine au-delà de cinq fleurs premium.
+- Retrait des couronnes sur fil de fer enfant et adulte témoin des choix
+  proposés pour de nouvelles demandes. Les sélections d'anciens dossiers
+  restent récupérables.
+- Liberté de création : carte blanche ou reproduction d'un bouquet de
+  L'Atelier Fleurs & Sens, avec photographie de référence.
+- Mesures des peignes, personnalisation des rubans, pseudo et réseau social.
+- Calendrier de rendez-vous synchronisé ; fichiers de calendrier inchangés.
+- Récapitulatif Excel et récapitulatifs envoyés à la cliente.
+
+INSTALLATION
+Décompresser le ZIP et déposer le CONTENU du dossier espace-mariage-main
+à la racine du dépôt GitHub de l'espace mariage. Conserver une copie de
+la version actuellement en ligne avant son remplacement.
+
+VÉRIFICATION APRÈS MISE EN LIGNE
+Effectuer une nouvelle demande de test avec adresse complète et une photo.
+Le mail administratrice doit contenir le récapitulatif Excel, le fichier
+Client_Tiime_*.csv et la photo d'inspiration. Le CSV s'importe dans Tiime
+avec le modèle de colonnes déjà utilisé. Vérifier si le client existe avant
+l'import pour éviter un doublon.
+
+Les e-mails déjà envoyés ne sont pas renvoyés rétroactivement.
+
+VALIDATION EFFECTUÉE
+Syntaxe JavaScript et références locales vérifiées. Quinze contrôles réussis
+dans le navigateur, sur des données fictives : CSV, adresses, bouquets,
+photos, pièces jointes, récapitulatifs et sauvegarde des choix. E-mails et
+base de données simulés ; moteur Excel externe simulé. Aucun e-mail réel
+ni rendez-vous réel créé pendant les vérifications.
