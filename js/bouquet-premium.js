@@ -24,7 +24,7 @@ function bouquetCustomizationHtml(label){
   }).join('');
   return '<fieldset class="bouquet-customization hidden" data-bouquet-box disabled><legend>🌸 Choisissez les fleurs de ce bouquet *</legend>'+
     '<p class="bouquet-explanation"><strong>Vous souhaitez des roses, des pivoines ou de l’hortensia stabilisé ?</strong> Ce sont des fleurs premium : elles sont en supplément du prix de base du bouquet et doivent être demandées ici, même si elles figurent sur votre photo d’inspiration.</p>'+
-    '<p class="bouquet-price">Roses et pivoines stabilisées de 6 cm : <strong>+6 € par fleur</strong>. Autres fleurs premium : <strong>sur devis</strong>.</p>'+
+    '<p class="bouquet-price">Consultez la grille des tarifs mariage 2028 pour les bouquets avec 1, 3 ou 5 fleurs premium. Au-delà de 5 roses ou pivoines premium stabilisées : <strong>+7 € par fleur supplémentaire</strong>. Autres fleurs premium : <strong>sur devis</strong>.</p>'+
     '<div class="bouquet-answers">'+options+'</div>'+
     '<div class="bouquet-flower-details hidden" data-bouquet-details><h4>Quelles fleurs souhaitez-vous ajouter ?</h4>'+
       '<p data-bouquet-quantity-help>Indiquez la quantité de chaque fleur pour un bouquet.</p>'+
@@ -60,7 +60,8 @@ function syncBouquetRow(row){
   other.disabled=!otherActive;other.required=otherActive;
   other.setCustomValidity(otherActive&&!other.value.trim()?'Précisez le nom de la fleur souhaitée.':'');
   row.querySelector('[data-bouquet-quantity-help]').textContent='Indiquez la quantité de chaque fleur pour un bouquet.'+(qty>1?' Cette composition sera appliquée aux '+qty+' bouquets de cette taille. Pour des compositions différentes, précisez votre souhait dans « Autres demandes ».':'');
-  var supplement=rosePivoine?'Supplément roses et pivoines : '+euro(rosePivoine*6)+' par bouquet'+(qty>1?' (soit '+euro(rosePivoine*6*qty)+' pour '+qty+' bouquets)':'')+'.':'';
+  var supplement=rosePivoine?'Roses et pivoines : '+rosePivoine+' par bouquet. Consultez la grille des tarifs 2028 pour le prix du bouquet.':'';
+  if(rosePivoine>5){var extra=(rosePivoine-5)*7;supplement='Au-delà des 5 fleurs premium : '+euro(extra)+' supplémentaires par bouquet'+(qty>1?' (soit '+euro(extra*qty)+' pour '+qty+' bouquets)':'')+', à ajouter au tarif du bouquet avec 5 fleurs premium.';}
   if(onQuote)supplement+=(supplement?' ':'')+'Autres fleurs sélectionnées : supplément sur devis.';
   row.querySelector('[data-bouquet-supplement]').textContent=supplement;
   row.querySelector('[data-bouquet-supplement]').classList.toggle('hidden',!supplement);
